@@ -1,0 +1,12 @@
+/* Webfont: MADESunflower */@font-face {
+    font-family: 'MADESunflower';
+    src: url('MADESunflower.eot'); /* IE9 Compat Modes */
+    src: url('MADESunflower.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('MADESunflower.woff') format('woff'), /* Modern Browsers */
+         url('MADESunflower.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('MADESunflower.svg#MADESunflower') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

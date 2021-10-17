@@ -1,0 +1,12 @@
+/* Webfont: MADEDillan */@font-face {
+    font-family: 'MADEDillan';
+    src: url('MADEDillan.eot'); /* IE9 Compat Modes */
+    src: url('MADEDillan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('MADEDillan.woff') format('woff'), /* Modern Browsers */
+         url('MADEDillan.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('MADEDillan.svg#MADEDillan') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

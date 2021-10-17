@@ -1,0 +1,9 @@
+/* Webfont: MADECannes */@font-face {
+    font-family: 'MADECannes';
+    src: url('MADE Cannes.woff2') format('woff2'), /* Modern Browsers */
+         url('MADE Cannes.otf') format('opentype'); /* Safari, Android, iOS */
+             font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
