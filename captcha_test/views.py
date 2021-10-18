@@ -20,7 +20,8 @@ from captcha_test.models import TextCaptcha, ImageCaptcha
 # 3D modeling
 from random import uniform, shuffle
 from PIL import ImageFont, Image, ImageDraw
-import numpy, pylab
+import numpy
+import pylab
 from mpl_toolkits.mplot3d import Axes3D
 
 
@@ -226,6 +227,7 @@ def captcha(request):
 def submit(request):
     if request.method == "POST":
         if capt_page == "captcha8.html":
+            global selected
             selected = request.POST.getlist("selected")
             ImageCaptcha(
                 topic=folder, checked_lists=selected, create_date=now
