@@ -156,6 +156,7 @@ def captcha(request):
                     "ContouredCaptcha",
                     "EmbosedCaptcha",
                     "EdgedCaptcha",
+                    "3dCaptcha",
                 ]
             else:
                 capt_list = [
@@ -168,7 +169,6 @@ def captcha(request):
                     "EdgedCaptcha",
                     "3dCaptcha",
                 ]
-        capt_list = ["3dCaptcha"]
 
         capt = random.choice(capt_list)
         filepath = text_captcha(capt)
