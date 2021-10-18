@@ -9,64 +9,56 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
       <title>CAPTCHA</title>
       <style>
-         img { display: block; margin: 0px auto; }
-         {% comment %} img { display: block; margin: 0px auto; } {% endcomment %}
-         
-         table {
+         img {
+         display: block;
          margin: 0px auto;
          }
-         #img_table td{
-         border:none;
-         {% comment %} border: 20px solid #ffffec; {% endcomment %}
+         table {
+            margin: 0px auto;
          }
-
+         #img_table td{
+            border:none;
+         }
          .hidden_table{
-         opacity:0;
-         background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-         transition: all 0.9s;
-         height: 0%;
+            opacity:0;
+            background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            transition: all 0.9s;
+            height: 0%;
          }
          .act {
-         opacity:100;
-         height: 100%;
+            opacity:100;
+            height: 100%;
          }
-
-         {% comment %} @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
-         * {
-         padding: 0;
-         margin: 0;
-         box-sizing: border-box;
-         font-family: "Poppins", sans-serif;
-         } {% endcomment %}
          .row {
-         display: grid;
-         grid-template-columns: 1fr 1fr 1fr 1fr;
-         width:120px;
-         border-width:0px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width:120px;
+            border-width:0px;
          }
          .row label {
-         cursor: pointer;
-         padding-right:0px;
-         width:120px;
+            cursor: pointer;
+            padding-right:0px;
+            width:120px;
          }
          .row label input[type="checkbox"] {
-         display: none;
-         padding:0px;
-         width:120px;
+            display: none;
+            padding:0px;
+            width:120px;
          }
          .row label .icon-box {
-         width: 120px;
-         flex-direction: column;
-         align-items: center;
-         background-color: #fff;
-         border-radius: 1px;
-         transition: 0.5s;
-         user-select: none;
-         padding: 2px;
+            width: 120px;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 1px;
+            transition: 0.5s;
+            user-select: none;
+            padding: 2px;
          }
          .row label input[type="checkbox"]:checked ~ .icon-box {
-         background: linear-gradient(138deg, #da2c4d, #f8ab37);
+            background: linear-gradient(138deg, #da2c4d, #f8ab37);
          }
+
       </style>
    </head>
    <body>

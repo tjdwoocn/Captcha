@@ -17,22 +17,127 @@ import os
 # database
 from captcha_test.models import TextCaptcha, ImageCaptcha
 
+# 3D modeling
+from random import uniform, shuffle
+from PIL import ImageFont, Image, ImageDraw
+import numpy, pylab
+from mpl_toolkits.mplot3d import Axes3D
+
 
 def intro(request):
     return render(request, "intro.html")
 
 
 def captcha(request):
-    print(request.method)
     global now
     now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    word_list = ['50gaji', 'sijakbub', '28 byul', 'sangwane', 'upneun', 'imigiue', 'nayul', '6809 byul', 'sangwane', 'upnun', '38soriue', 'nayul', '1byunjuhagi', 'apsungut', '160826 banbok', '55odokul', 'yudohagi', 'byul', 'godjaneun', 'sangkakel', 'grulssahage', 'byulil inyang', 'daedanhan', 'sangkakul', 'godjaneun', 'gutchurum', 'ssgi', 'gunnu dduigi', '319401 clishe', 'muchim', 'gmgie', 'dojun', 'banggui', 'gguigi', '150967 soum', 'naegi', 'banghae', 'hagi', '11ya!', 'uzzurago!', 'onul', 'cheum', 'bon', 'saramerang', 'death', 'in wegas', 'dudgi', 'cufi', 'masigo',
-                 '441283 sulegi', 'yuneahagi', '5115 hoohiehaki', 'ghaguro', 'gusllu', '149028 kaki', 'dasi', 'dolaoziman', '71byulban', 'darlazizi', '177640 aneum', 'gnang', '18 salgi', 'naiki', '80898 runklub', '99gaip', '25.3 giugagi', '25.3', 'banggum', 'ssutdun', 'gut', '26da', 'galaupgi', 'ungdung', '27banga', 'banggem', 'na chutnya', '29aninde', 'jinaganun', 'pungkyung', 'dagaonun', 'pung kyung', 'zzikgi', '31hldlin', 'sajin', '110479 jiugi', '29475 jahae', 'hokeun', 'jaki hyumo', 'ddaddthan', 'ozum', '398nuki', 'muhanhan', 'geung jung', 'jagiae', 'jajongam', '6145mu']
+    word_list = [
+        "50gaji",
+        "sijakbub",
+        "28 byul",
+        "sangwane",
+        "upneun",
+        "imigiue",
+        "nayul",
+        "6809 byul",
+        "sangwane",
+        "upnun",
+        "38soriue",
+        "nayul",
+        "1byunjuhagi",
+        "apsungut",
+        "160826 banbok",
+        "55odokul",
+        "yudohagi",
+        "byul",
+        "godjaneun",
+        "sangkakel",
+        "grulssahage",
+        "byulil inyang",
+        "daedanhan",
+        "sangkakul",
+        "godjaneun",
+        "gutchurum",
+        "ssgi",
+        "gunnu dduigi",
+        "319401 clishe",
+        "muchim",
+        "gmgie",
+        "dojun",
+        "banggui",
+        "gguigi",
+        "150967 soum",
+        "naegi",
+        "banghae",
+        "hagi",
+        "11ya!",
+        "uzzurago!",
+        "onul",
+        "cheum",
+        "bon",
+        "saramerang",
+        "death",
+        "in wegas",
+        "dudgi",
+        "cufi",
+        "masigo",
+        "441283 sulegi",
+        "yuneahagi",
+        "5115 hoohiehaki",
+        "ghaguro",
+        "gusllu",
+        "149028 kaki",
+        "dasi",
+        "dolaoziman",
+        "71byulban",
+        "darlazizi",
+        "177640 aneum",
+        "gnang",
+        "18 salgi",
+        "naiki",
+        "80898 runklub",
+        "99gaip",
+        "25.3 giugagi",
+        "25.3",
+        "banggum",
+        "ssutdun",
+        "gut",
+        "26da",
+        "galaupgi",
+        "ungdung",
+        "27banga",
+        "banggem",
+        "na chutnya",
+        "29aninde",
+        "jinaganun",
+        "pungkyung",
+        "dagaonun",
+        "pung kyung",
+        "zzikgi",
+        "31hldlin",
+        "sajin",
+        "110479 jiugi",
+        "29475 jahae",
+        "hokeun",
+        "jaki hyumo",
+        "ddaddthan",
+        "ozum",
+        "398nuki",
+        "muhanhan",
+        "geung jung",
+        "jagiae",
+        "jajongam",
+        "6145mu",
+    ]
     global str_word
     str_word = random.choice(word_list)
-    capt_page_list = ['captcha5.html', 'captcha6.html',
-                      'captcha7.html', 'captcha8.html']
+    capt_page_list = [
+        "captcha5.html",
+        "captcha6.html",
+        "captcha7.html",
+        "captcha8.html",
+    ]
     global capt_page
     capt_page = random.choice(capt_page_list)
 
@@ -42,36 +147,54 @@ def captcha(request):
                 "ICaptcha",
             ]
         else:
-            capt_list = [
-                "OnecolorCaptcha",
-                "MulticolorCaptcha",
-                "GraycolorCaptcha",
-                "BluredCaptcha",
-                "ContouredCaptcha",
-                "EmbosedCaptcha",
-                "EdgedCaptcha",
-            ]
-        # capt_list = ['ImageCaptcha']
+            if len(str_word) > 6:
+                capt_list = [
+                    "OnecolorCaptcha",
+                    "MulticolorCaptcha",
+                    "GraycolorCaptcha",
+                    "BluredCaptcha",
+                    "ContouredCaptcha",
+                    "EmbosedCaptcha",
+                    "EdgedCaptcha",
+                ]
+            else:
+                capt_list = [
+                    "OnecolorCaptcha",
+                    "MulticolorCaptcha",
+                    "GraycolorCaptcha",
+                    "BluredCaptcha",
+                    "ContouredCaptcha",
+                    "EmbosedCaptcha",
+                    "EdgedCaptcha",
+                    "3dCaptcha",
+                ]
+        capt_list = ["3dCaptcha"]
 
         capt = random.choice(capt_list)
         filepath = text_captcha(capt)
 
-        if capt_page == 'captcha5.html':
+        if capt_page == "captcha5.html":
             logo_list = ["amazon"]
             logo = random.choice(logo_list)
 
-            return render(request, "captcha5.html", {"capt": filepath, "logo": logo})
+            return render(
+                request, "captcha5.html", {"capt": filepath, "logo": logo}
+            )
 
         elif capt_page == "captcha6.html":
             logo_list = ["google"]
             logo = random.choice(logo_list)
 
-            return render(request, "captcha6.html", {"capt": filepath, "logo": logo})
-        elif capt_page == 'captcha7.html':
+            return render(
+                request, "captcha6.html", {"capt": filepath, "logo": logo}
+            )
+        elif capt_page == "captcha7.html":
             logo_list = ["facebook"]
             logo = random.choice(logo_list)
 
-            return render(request, "captcha7.html", {"capt": filepath, "logo": logo})
+            return render(
+                request, "captcha7.html", {"capt": filepath, "logo": logo}
+            )
 
         elif capt_page == "captcha8.html":
             logo_list = ["google"]
@@ -82,15 +205,17 @@ def captcha(request):
             img_path = "./static/images/img_captcha/{}".format(folder)
 
             img = select_rand_img(img_path)
-            folder_path = "static/images/img_captcha_sliced/{}".format(
-                folder)
+            folder_path = "static/images/img_captcha_sliced/{}".format(folder)
             sliced_img_paths = slice_img(img_path, img, 4, 4, folder_path)
 
             return render(
                 request,
                 "captcha8.html",
-                {"capt": folder, "logo": logo,
-                    "sliced_img_paths": sliced_img_paths},
+                {
+                    "capt": folder,
+                    "logo": logo,
+                    "sliced_img_paths": sliced_img_paths,
+                },
             )
         else:
             return HttpResponse("<h4>No Return</h4>")
@@ -101,16 +226,15 @@ def captcha(request):
 def submit(request):
     if request.method == "POST":
         if capt_page == "captcha8.html":
-            selected = request.POST.getlist('selected')
-            ImageCaptcha(topic=folder, checked_lists=selected,
-                         create_date=now).save()
-            print(folder, selected)
-
+            selected = request.POST.getlist("selected")
+            ImageCaptcha(
+                topic=folder, checked_lists=selected, create_date=now
+            ).save()
         else:
-            response = request.POST.get('captcha')
-            TextCaptcha(answer=str_word, response=response,
-                        create_date=now).save()
-            print("Answer: {0}, Response: {1}".format(str_word, response))
+            response = request.POST.get("captcha")
+            TextCaptcha(
+                answer=str_word, response=response, create_date=now
+            ).save()
         return render(request, "intro.html")
     else:
         return render(request, "intro.html")
@@ -138,8 +262,7 @@ def slice_img(img_path, input, xPieces, yPieces, save_dir):
     width = imgwidth // xPieces
     for i in range(0, yPieces):
         for j in range(0, xPieces):
-            box = (j * width, i * height, (j + 1)
-                   * width, (i + 1) * height)
+            box = (j * width, i * height, (j + 1) * width, (i + 1) * height)
             a = im.crop(box)
             try:
                 img_path = os.path.join(
@@ -152,107 +275,38 @@ def slice_img(img_path, input, xPieces, yPieces, save_dir):
     return img_paths
 
 
-def captcha5(request):
-    now = datetime.now()
-    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    word_list = ["chicken"]
-    logo_list = ["amazon"]
-    global str_word
-    str_word = random.choice(word_list)
-    logo = random.choice(logo_list)
+def makeImage(text, width=512, height=200, angle=None):
+    angle = angle if angle != None else uniform(-50, 10)
+    try:
+        font = ImageFont.truetype(
+            "static/fonts/GoogleFonts/ofl/graduate\Graduate-Regular.ttf",
+            25,
+        )
+    except IOError:
+        raise IOError(
+            "Font file doesn't exist. Please set `fontPath` correctly."
+        )
+    txtW, txtH = font.getsize(text)
+    img = Image.new("L", (txtW * 3, txtH * 3), 255)
+    drw = ImageDraw.Draw(img)
+    drw.text((txtW, txtH), text, font=font)
 
-    capt_list = [
-        "ICaptcha",
-        "OnecolorCaptcha",
-        "MulticolorCaptcha",
-        "GraycolorCaptcha",
-        "BluredCaptcha",
-        "ContouredCaptcha",
-        "EmbosedCaptcha",
-        "EdgedCaptcha",
-    ]
-    # capt_list = ['ImageCaptcha']
-
-    capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
-
-    return render(request, "captcha5.html", {"capt": filepath, "logo": logo})
-
-
-def captcha6(request):
-    now = datetime.now()
-    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    word_list = ["chicken"]
-    logo_list = ["google"]
-    global str_word
-    str_word = random.choice(word_list)
-    logo = random.choice(logo_list)
-
-    capt_list = [
-        "ICaptcha",
-        "OnecolorCaptcha",
-        "MulticolorCaptcha",
-        "GraycolorCaptcha",
-        "BluredCaptcha",
-        "ContouredCaptcha",
-        "EmbosedCaptcha",
-        "EdgedCaptcha",
-    ]
-    # capt_list = ['ImageCaptcha']
-
-    capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
-
-    return render(request, "captcha6.html", {"capt": filepath, "logo": logo})
-
-
-def captcha7(request):
-    now = datetime.now()
-    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    word_list = ["chicken"]
-    logo_list = ["facebook"]
-    global str_word
-    str_word = random.choice(word_list)
-    logo = random.choice(logo_list)
-    capt_list = [
-        "ICaptcha",
-        "OnecolorCaptcha",
-        "MulticolorCaptcha",
-        "GraycolorCaptcha",
-        "BluredCaptcha",
-        "ContouredCaptcha",
-        "EmbosedCaptcha",
-        "EdgedCaptcha",
-    ]
-    # capt_list = ['ImageCaptcha']
-
-    capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
-
-    return render(request, "captcha7.html", {"capt": filepath, "logo": logo})
-
-
-def captcha8(request):
-    now = datetime.now()
-    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    word_list = ["chicken"]
-    logo_list = ["google"]
-    global str_word
-    str_word = random.choice(word_list)
-    logo = random.choice(logo_list)
-    folder_lists = os.listdir("./static/images/img_captcha/")
-    folder = random.choice(folder_lists)
-    img_path = "./static/images/img_captcha/{}".format(folder)
-
-    img = select_rand_img(img_path)
-    folder_path = "static/images/img_captcha_sliced/{}".format(str_word)
-    sliced_img_paths = slice_img(img_path, img, 4, 4, folder_path)
-
-    return render(
-        request,
-        "captcha8.html",
-        {"capt": folder, "logo": logo, "sliced_img_paths": sliced_img_paths},
+    fig = pylab.figure(figsize=(width / 120.0, height / 50.0))
+    ax = Axes3D(fig)
+    X, Y = numpy.meshgrid(range(img.size[0]), range(img.size[1]))
+    Z = 1 - numpy.asarray(img) / 255
+    ax.plot_wireframe(X, -Y, Z, rstride=1, cstride=1)
+    ax.set_zlim((-3, 3))
+    ax.set_xlim((txtW * 1.1, txtW * 1.9))
+    ax.set_ylim((-txtH * 1.9, -txtH * 1.1))
+    ax.set_axis_off()
+    ax.view_init(elev=40, azim=-60 + angle)
+    filepath = "static/images/captcha//{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
     )
+    fig.savefig(filepath)
+
+    return filepath
 
 
 def text_captcha(capt):
@@ -452,7 +506,113 @@ def text_captcha(capt):
         )
         image.save(filepath, "png")
 
+    elif capt == "3dCaptcha":
+        filepath = makeImage(str_word)
+
     return filepath
+
+
+def captcha5(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["amazon"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt)
+
+    return render(request, "captcha5.html", {"capt": filepath, "logo": logo})
+
+
+def captcha6(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["google"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt)
+
+    return render(request, "captcha6.html", {"capt": filepath, "logo": logo})
+
+
+def captcha7(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["facebook"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt)
+
+    return render(request, "captcha7.html", {"capt": filepath, "logo": logo})
+
+
+def captcha8(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["google"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+    folder_lists = os.listdir("./static/images/img_captcha/")
+    folder = random.choice(folder_lists)
+    img_path = "./static/images/img_captcha/{}".format(folder)
+
+    img = select_rand_img(img_path)
+    folder_path = "static/images/img_captcha_sliced/{}".format(str_word)
+    sliced_img_paths = slice_img(img_path, img, 4, 4, folder_path)
+
+    return render(
+        request,
+        "captcha8.html",
+        {"capt": folder, "logo": logo, "sliced_img_paths": sliced_img_paths},
+    )
 
     # def captcha1(request):
     #     num = random.randrange(1021, 9899)
