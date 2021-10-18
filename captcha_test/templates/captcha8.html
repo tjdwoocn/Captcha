@@ -1,181 +1,173 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+      <title>CAPTCHA</title>
+      <style>
+         img { display: block; margin: 0px auto; }
+         {% comment %} img { display: block; margin: 0px auto; } {% endcomment %}
+         
+         table {
+         margin: 0px auto;
+         }
+         #img_table td{
+         border:none;
+         {% comment %} border: 20px solid #ffffec; {% endcomment %}
+         }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>CAPTCHA</title>
-    <style>
-			img { display: block; margin: 0px auto; }
+         .hidden_table{
+         opacity:0;
+         background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+         transition: all 0.9s;
+         height: 0%;
+         }
+         .act {
+         opacity:100;
+         height: 100%;
+         }
 
-			{% comment %} img { display: block; margin: 0px auto; } {% endcomment %}
-      table {
-        margin: 0px auto;
-      }
-      #img_table td{
-        border:none;
-        {% comment %} border: 20px solid #ffffec; {% endcomment %}
-      }
-
-      #hidden_table{
-        visibility: hidden;
-      }
-      
-    {% comment %} @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
-
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    } {% endcomment %}
-
-
-      .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        width:120px;
-        border-width:0px;
-      }
-
-      .row label {
-        cursor: pointer;
-        padding-right:0px;
-        width:120px;
-
-      }
-
-      .row label input[type="checkbox"] {
-        display: none;
-        padding:0px;
-        width:120px;
-
-      }
-
-
-      .row label .icon-box {
-        width: 120px;
-        flex-direction: column;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 1px;
-        transition: 0.5s;
-        user-select: none;
-        padding: 2px;
-
-      }
-
-      .row label input[type="checkbox"]:checked ~ .icon-box {
-        background: linear-gradient(138deg, #da2c4d, #f8ab37);
-      }
-
-
-		</style>
-  </head>
-  <body>
-    <div><img src="/static/images/logo/{{logo}}.jpg" width="180", height="100" class="img_logo" style='display:block; padding-top:20px; padding-bottom:10px;margin:0px auto;'/></div>
-    <div class="container">
-        <form action="{% url 'submit' %}" method='post'>
+         {% comment %} @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
+         * {
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+         font-family: "Poppins", sans-serif;
+         } {% endcomment %}
+         .row {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr 1fr;
+         width:120px;
+         border-width:0px;
+         }
+         .row label {
+         cursor: pointer;
+         padding-right:0px;
+         width:120px;
+         }
+         .row label input[type="checkbox"] {
+         display: none;
+         padding:0px;
+         width:120px;
+         }
+         .row label .icon-box {
+         width: 120px;
+         flex-direction: column;
+         align-items: center;
+         background-color: #fff;
+         border-radius: 1px;
+         transition: 0.5s;
+         user-select: none;
+         padding: 2px;
+         }
+         .row label input[type="checkbox"]:checked ~ .icon-box {
+         background: linear-gradient(138deg, #da2c4d, #f8ab37);
+         }
+      </style>
+   </head>
+   <body>
+      <div><img src="/static/images/logo/{{logo}}.jpg" width="180", height="100" class="img_logo" style='display:block; padding-top:20px; padding-bottom:10px;margin:0px auto;'/></div>
+      <div class="container">
+         <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
-
-          <table style="border: 1px solid rgb(161, 161, 161); width: 400px; height: 80px; ">
-              <tr>
-                <td style="text-align:center;"><input type="checkbox" style='width:30px; height:30px; vertical-align: middle;' name="I'm not a robot" id="cb1" onclick="toggleBoxVisibility()"/></td>
-                <td>
-                  <label class="form-check-label" for="exampleCheck1" style='text-align:center; vertical-align:top; font-size:20px; font-weight:bold;'> I'm not a robot </label>
-                </td>
-                <td><img src="/static/images/logo/recaptcha_logo.png" width="80", height="80" class="capt_logo"/ style="display:block;"></td>
-              </tr>
-          </table>
-            <br>
-
-            <table id="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 500px; height: 300px;">
-              <tr style="vertical-align: baseline; ">
-                <td>
-                  <table style="border: 2px solid rgb(226, 226, 226);  background:#4e94e9; width: 480px; height: 100px; margin:5px auto;">
-                    <tr>
-                      <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:17px; padding-left:20px; padding-top:20px; '>Select all squares with</td>
-                    <tr> 
-                      <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:35px; padding-left:20px;'>{{capt}}</td>
-                    </tr>
-                    <tr> 
-                      <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:19px; padding-left:20px; padding-bottom:20px; '></td>
-                    </tr>
-                    <tr>
-                    </tr>
-                  </table>
-                  <table id= 'img_table' style="border: 2px solid rgb(226, 226, 226);width: 480px;margin:5px;cellspacing=0px;">
-                    <tr>
-                    <div class='row'>
-                      {% for img in sliced_img_paths %}
-                        <td style="padding:0px; margin:0px;">
-                          <div class="row">
-                            <label>
-                              <input id="img_cb" type="checkbox" name="selected" value="{{capt}}_{{img}}"/>
-                              <div class="icon-box" >
-                                <span><img src="{{img}}" width="110" height="110" ></span>
-                              </div>
-                            </label>
-                          </div>
-                        </td>
-                      {# if the the forloop counter is divisible by 4, close the <li> tag and open a new one #}
-                        {% if forloop.counter|divisibleby:4 %}
-                          </tr>
-                          <tr>
-                        {% endif %}
-                      {% endfor %}
-                    </div>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td style='text-align:Right; vertical-align: center; padding-bottom:4px; padding-right:10px;'>
-                    <img style="float:Left;margin-left:10px;" src="/static/images/logo/option_icon.png" width="114" height="30px;" >
-                    <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:100px; height:40px; background:#4e94e9; border-radius:5px;'>SUBMIT</button>
-                </td>
-              </tr>
+            <table style="border: 1px solid rgb(161, 161, 161); width: 400px; height: 80px; ">
+               <tr>
+                  <td style="text-align:center;"><input type="checkbox" style='width:30px; height:30px; vertical-align: middle;' name="I'm not a robot" id="cb1" onclick="toggleBoxVisibility()"/></td>
+                  <td>
+                     <label class="form-check-label" for="exampleCheck1" style='text-align:center; vertical-align:top; font-size:20px; font-weight:bold;'> I'm not a robot </label>
+                  </td>
+                  <td><img src="/static/images/logo/recaptcha_logo.png" width="80", height="80" class="capt_logo"/ style="display:block;"></td>
+               </tr>
             </table>
-          </form>
-    </div>
-
-    <script>
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
-        ctx.font = "30px Comic Sans MS";
-        ctx.fillStyle = "green";
-        ctx.textBaseline = "middle";
-        ctx.textAlign = "center";
-        ctx.fillText("{{capt}}", canvas.width/2, canvas.height/2);
-    </script>
-
-    <script>
-      function toggleBoxVisibility(){
-        if (document.getElementById("cb1").checked == true){
-          document.getElementById("hidden_table").style.visibility="visible";
-          document.getElementById("cb1").disabled="disabled";
-
-        }
-        else{
-          document.getElementById("hidden_table").style.visibility="hidden";
-        }
-      }
-    </script>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    -->
-  </body>
+            <br>
+            <table class="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 500px; height: 300px;">
+               <tr style="vertical-align: baseline; ">
+                  <td>
+                     <table style="border: 2px solid rgb(226, 226, 226);  background:#4e94e9; width: 480px; height: 100px; margin:5px auto;">
+                        <tr>
+                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:17px; padding-left:20px; padding-top:20px; '>Select all squares with</td>
+                        <tr>
+                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:35px; padding-left:20px;'>{{capt}}</td>
+                        </tr>
+                        <tr>
+                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:19px; padding-left:20px; padding-bottom:20px; '></td>
+                        </tr>
+                        <tr>
+                        </tr>
+                     </table>
+                     <table id= 'img_table' style="border: 2px solid rgb(226, 226, 226);width: 480px;margin:5px;cellspacing=0px;">
+                      <tr>
+                        <div class='row'>
+                          {% for img in sliced_img_paths %}
+                            <td style="padding:0px; margin:0px;">
+                              <div class="row">
+                                <label>
+                                  <input id="img_cb" type="checkbox" name="selected" value="{{capt}}_{{img}}"/>
+                                  <div class="icon-box" >
+                                    <span><img src="{{img}}" width="110" height="110" ></span>
+                                  </div>
+                                </label>
+                              </div>
+                            </td>
+                          {# if the the forloop counter is divisible by 4, close the <li> tag and open a new one #}
+                            {% if forloop.counter|divisibleby:4 %}
+                              </tr>
+                              <tr>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+               <td style='text-align:Right; vertical-align: center; padding-bottom:4px; padding-right:10px;'>
+               <img style="float:Left;margin-left:10px;" src="/static/images/logo/option_icon.png" width="114" height="30px;" >
+               <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:100px; height:40px; background:#4e94e9; border-radius:5px;'>SUBMIT</button>
+               </td>
+               </tr>
+            </table>
+         </form>
+      </div>
+      <script>
+         var canvas = document.getElementById("myCanvas");
+         var ctx = canvas.getContext("2d");
+         ctx.font = "30px Comic Sans MS";
+         ctx.fillStyle = "green";
+         ctx.textBaseline = "middle";
+         ctx.textAlign = "center";
+         ctx.fillText("{{capt}}", canvas.width/2, canvas.height/2);
+      </script>
+      <script>
+         var checkbox = document.querySelector("input[type=checkbox]");
+         const box = document.querySelector('.hidden_table');
+         
+         checkbox.addEventListener('change', function() {
+           if (this.checked) {
+             box.classList.toggle('act');
+             document.getElementById("cb1").disabled="disabled";
+         
+           }
+           else{
+             document.getElementById("cb1").disabled=False;
+         
+           }
+         });
+      </script>
+      <!-- Optional JavaScript; choose one of the two! -->
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+      <!-- Option 2: Separate Popper and Bootstrap JS -->
+      <!--
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+         -->
+   </body>
 </html>
+
+
+                  
