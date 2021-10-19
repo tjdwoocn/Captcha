@@ -558,7 +558,7 @@ def captcha5(request):
     # capt_list = ['ImageCaptcha']
 
     capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
+    filepath = text_captcha(capt, str_word)
 
     return render(request, "captcha5.html", {"capt": filepath, "logo": logo})
 
@@ -585,7 +585,7 @@ def captcha6(request):
     # capt_list = ['ImageCaptcha']
 
     capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
+    filepath = text_captcha(capt, str_word)
 
     return render(request, "captcha6.html", {"capt": filepath, "logo": logo})
 
@@ -611,7 +611,7 @@ def captcha7(request):
     # capt_list = ['ImageCaptcha']
 
     capt = random.choice(capt_list)
-    filepath = text_captcha(capt)
+    filepath = text_captcha(capt, str_word)
 
     return render(request, "captcha7.html", {"capt": filepath, "logo": logo})
 
