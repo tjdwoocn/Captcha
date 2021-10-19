@@ -2,6 +2,8 @@
 <!doctype html>
 <html lang="en">
    <head>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +15,27 @@
             display: block;
             margin: 0px auto;
          }
-         .hidden_table{
+         {% comment %} .hidden_div{
             opacity:0;
-            background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
             transition: all 0.9s;
             height: 0%;
          }
-         .act {
+         .hidden_div:hover {
             opacity:100;
             height: 100%;
+         } {% endcomment %}
+         .hidden_div{
+            animation-duration: 1s;
+            animation-name: autoplay1
+         }
+         @keyframes autoplay1 {
+            from {
+               opacity:0;
+            }
+
+            to {
+               opacity: 100;
+            }
          }
          table {
             margin: 0px auto;
@@ -37,10 +51,10 @@
    </head>
    <body>
       <div><img src="/static/images/logo/{{logo}}.jpg" width="180", height="100" class="img_logo" style='display:block; padding-top:20px; padding-bottom:10px; margin:0px auto;'/></div>
-      <div class="container">
+      <div class="hidden_div">
          <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
-            <table style="border: 1px solid rgb(161, 161, 161); width: 400px; height: 80px; ">
+            <!-- <table style="border: 1px solid rgb(161, 161, 161); width: 400px; height: 80px; ">
                <tr>
                   <td style="text-align:center;"><input type="checkbox" style='width:30px; height:30px; vertical-align: middle;' name="I'm not a robot" id="cb1" onclick="toggleBoxVisibility()"/></td>
                   <td>
@@ -48,7 +62,7 @@
                   </td>
                   <td><img src="/static/images/logo/recaptcha_logo.png" width="80", height="80" class="capt_logo"></td>
                </tr>
-            </table>
+            </table> -->
             <br>
             <table class="hidden_table" style="border: 5px solid #820300; width: 700px; height: 350px;  border-radius:20px;">
                <tr>
@@ -60,7 +74,7 @@
                </tr>
                <tr>
                   <td style="margin:5px;border: 5px solid#820300; border-radius:20px;height:100px; background:#ffe07e; padding-left:10px;">
-                     <input type="text" style='border:2px solid #7186bb; height:50px;' class=" mt-3 mb-3" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
+                     <input type="text" style='border:2px solid #7186bb; height:50px;' class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
                   </td>
                   <td style="background:#820300;border: 5px solid#820300;"><img src="/static/images/logo/recaptcha_icon.png" width="280", height="80" class="capt_icon" style="border:0;"></td>
                </tr>
@@ -73,9 +87,34 @@
                   <td style="border-top:5px solid #820300;"></td>
                </tr>
             </table>
+            <br>
+            <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
+               <div style="width:500px; margin-left:auto; margin-right:auto; margin-bottom:300px;" class="simple-keyboard"></div>
+               <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+               <script src="src/index.js"></script>
          </form>
       </div>
       <script>
+         const Keyboard = window.SimpleKeyboard.default;
+
+         const myKeyboard = new Keyboard({
+         onChange: input => onChange(input),
+         onKeyPress: button => onKeyPress(button)
+         });
+         
+         
+         function onChange(input) {
+         document.querySelector(".input").value = input;
+         console.log("Input changed", input);
+         }
+         
+         
+         function onKeyPress(button) {
+         console.log("Button pressed", button);
+         }
+      </script>
+
+      <!-- <script>
          var checkbox = document.querySelector("input[type=checkbox]");
          const box = document.querySelector('.hidden_table');
          
@@ -90,7 +129,7 @@
          
            }
          });
-      </script>
+      </script> -->
       <script>
          var canvas = document.getElementById("myCanvas");
          var ctx = canvas.getContext("2d");

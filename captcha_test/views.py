@@ -20,8 +20,11 @@ from captcha_test.models import TextCaptcha, ImageCaptcha
 # 3D modeling
 from random import uniform, shuffle
 from PIL import ImageFont, Image, ImageDraw
-import numpy, pylab
+import numpy
+import pylab
 from mpl_toolkits.mplot3d import Axes3D
+
+error_count = 0
 
 
 def intro(request):
@@ -32,6 +35,7 @@ def captcha(request):
     global now
     now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    global word_list
     word_list = [
         "50gaji",
         "sijakbub",
@@ -142,6 +146,7 @@ def captcha(request):
     capt_page = random.choice(capt_page_list)
 
     if request.method == "POST":
+        global capt_list
         if len(str_word) > 7:
             capt_list = [
                 "ICaptcha",
@@ -171,10 +176,11 @@ def captcha(request):
                 ]
 
         capt = random.choice(capt_list)
-        filepath = text_captcha(capt)
+        filepath = text_captcha(capt, str_word)
 
         if capt_page == "captcha5.html":
             logo_list = ["amazon"]
+            global logo
             logo = random.choice(logo_list)
 
             return render(
@@ -224,18 +230,37 @@ def captcha(request):
 
 
 def submit(request):
+    global error_count
     if request.method == "POST":
         if capt_page == "captcha8.html":
+            global selected
             selected = request.POST.getlist("selected")
             ImageCaptcha(
                 topic=folder, checked_lists=selected, create_date=now
             ).save()
+            return render(request, "intro.html")
+
         else:
             response = request.POST.get("captcha")
             TextCaptcha(
                 answer=str_word, response=response, create_date=now
             ).save()
-        return render(request, "intro.html")
+
+            if str_word == response:
+                return render(request, "intro.html")
+            else:
+                if error_count < 2:
+                    error_count += 1
+
+                    capt = random.choice(capt_list)
+                    filepath = text_captcha(capt, str_word)
+                    return render(
+                        request, capt_page, {"capt": filepath, "logo": logo}
+                    )
+                else:
+                    error_count = 0
+                    return render(request, "intro.html")
+
     else:
         return render(request, "intro.html")
 
@@ -279,7 +304,7 @@ def makeImage(text, width=512, height=200, angle=None):
     angle = angle if angle != None else uniform(-50, 10)
     try:
         font = ImageFont.truetype(
-            "static/fonts/GoogleFonts/ofl/graduate\Graduate-Regular.ttf",
+            "static/fonts/GoogleFonts/ofl/graduate/Graduate-Regular.ttf",
             25,
         )
     except IOError:
@@ -309,13 +334,12 @@ def makeImage(text, width=512, height=200, angle=None):
     return filepath
 
 
-def text_captcha(capt):
+def text_captcha(capt, str_word):
     now = datetime.now()
 
     if capt == "ICaptcha":
         # Create an image instance of the gicen size
         image = ICaptcha(width=280, height=90)
-
         capt_text = str_word
         # generate the image of the given text
         data = image.generate(capt_text)

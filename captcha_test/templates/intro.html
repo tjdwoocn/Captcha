@@ -33,16 +33,19 @@
             {% csrf_token %}
             <table style="border: 1px solid rgb(161, 161, 161); width: 400px; height: 80px; ">
               <tr>
-                <td style="text-align:center;"><input type="checkbox" style='width:30px; height:30px; vertical-align: middle;' name="I'm not a robot" id="cb1" onclick="toggleBoxVisibility()"/></td>
+                <td style="text-align:center;"><input type="checkbox" style='width:30px; height:30px; vertical-align: middle;' name="I'm not a robot" id="cb1"/></td>
                 <td>
                   <label class="form-check-label" for="exampleCheck1" style='text-align:center; vertical-align:top; font-size:20px; font-weight:bold;'> I'm not a robot </label>
                 </td>
                 <td><img src="/static/images/logo/recaptcha_logo.png" width="80", height="80" class="capt_logo"></td>
               </tr>
             </table>
-            <button type="submit" class="btn btn-primary" style="background:white;border:0px;"><img src="/static/images/Animation_01.gif" width="512", height="512" class="capt_logo"></button>
-          </form>
+        <img src="/static/images/Animation_01.gif" width="512", height="512" class="capt_logo">
+    <button type="submit" class="btn btn-primary" id=btn_primary style="background:white;border:0px; display:none;"></button>
+  
+  </form>
     </div>
+    <!-- <button type="submit" class="btn btn-primary" style="background:white;border:0px;"><img src="/static/images/Animation_01.gif" width="512", height="512" class="capt_logo"></button> -->
 
     <script>
         var canvas = document.getElementById("myCanvas");
@@ -53,6 +56,19 @@
         ctx.textAlign = "center";
         ctx.fillText("{{capt}}", canvas.width/2, canvas.height/2);
     </script>
+    <script>
+      var checkbox = document.querySelector("input[type=checkbox]");
+
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          document.getElementById('btn_primary').click()
+        }
+        else{
+          document.getElementById("cb1").disabled=False;
+      
+        }
+      });
+   </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
