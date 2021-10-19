@@ -56,29 +56,31 @@
          
          .row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            width:120px;
-            border-width:0px;
+            grid-template-columns: 1fr;
+            margin-left:0px;
+            <!-- width:120px; -->
+            <!-- border-width:0px; -->
          }
          .row label {
             cursor: pointer;
-            padding-right:0px;
-            width:120px;
+            padding:0px;
+            <!-- padding-right:0px; -->
+            width:100%;
          }
          .row label input[type="checkbox"] {
             display: none;
-            padding:0px;
-            width:120px;
+            <!-- padding:0px; -->
+            width:100%;
          }
          .row label .icon-box {
-            width: 120px;
+            width: 100%;
             flex-direction: column;
             align-items: center;
             background-color: #fff;
             border-radius: 1px;
             transition: 0.5s;
             user-select: none;
-            padding: 2px;
+            padding: 3px;
          }
          .row label input[type="checkbox"]:checked ~ .icon-box {
             background: linear-gradient(138deg, #da2c4d, #f8ab37);
@@ -87,7 +89,7 @@
       </style>
    </head>
    <body>
-      <div><img src="/static/images/logo/{{logo}}.jpg" width="180", height="100" class="img_logo" style='display:block; padding-top:20px; padding-bottom:10px;margin:0px auto;'/></div>
+      <div><img src="/static/images/logo/{{logo}}.jpg" class="img_logo" style='margin-left:auto; margin-right:auto;width:25%; display:block; margin-top:150px; margin-bottom:1%;'/></div>
       <div class="container">
          <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
@@ -101,14 +103,14 @@
                </tr>
             </table> -->
             <br>
-            <table class="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 500px; height: 300px;">
+            <table class="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 60%; height: 900px; margin-bottom:300px;">
                <tr style="vertical-align: baseline; ">
                   <td>
-                     <table style="border: 2px solid rgb(226, 226, 226);  background:#4e94e9; width: 480px; height: 100px; margin:5px auto;">
+                     <table style="border: 2px solid rgb(226, 226, 226);  background:#4e94e9; width: 80%; height: 135px; margin:5px auto;">
                         <tr>
-                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:17px; padding-left:20px; padding-top:20px; '>Select all squares with</td>
+                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:25px; padding-left:20px; padding-top:20px; '>Select all squares with</td>
                         <tr>
-                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:35px; padding-left:20px;'>{{capt}}</td>
+                           <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:49px; padding-left:20px;'>{{capt}}</td>
                         </tr>
                         <tr>
                            <td style='color: #ffffec;text-align:left;font-weight:bold; vertical-align:middle; font-size:19px; padding-left:20px; padding-bottom:20px; '></td>
@@ -116,35 +118,33 @@
                         <tr>
                         </tr>
                      </table>
-                     <table id= 'img_table' style="border: 2px solid rgb(226, 226, 226);width: 480px;margin:5px;cellspacing=0px;">
+                     <table id= 'img_table' style="border: 2px solid rgb(226, 226, 226);width:95%; height:690px; ">
                       <tr>
-                        <div class='row'>
-                          {% for img in sliced_img_paths %}
-                            <td style="padding:0px; margin:0px;">
-                              <div class="row">
-                                <label>
-                                  <input id="img_cb" type="checkbox" name="selected" value="{{capt}}_{{img}}"/>
-                                  <div class="icon-box" >
-                                    <span><img src="{{img}}" width="110" height="110" ></span>
-                                  </div>
-                                </label>
-                              </div>
-                            </td>
-                          {# if the the forloop counter is divisible by 4, close the <li> tag and open a new one #}
-                            {% if forloop.counter|divisibleby:4 %}
-                              </tr>
-                              <tr>
-                            {% endif %}
-                          {% endfor %}
-                        </div>
+                        {% for img in sliced_img_paths %}
+                           <td>
+                           <div class="row" style="width:100%;">
+                              <label>
+                                 <input id="img_cb" type="checkbox" name="selected" value="{{capt}}_{{img}}" />
+                                 <div class="icon-box" >
+                                 <span><img src="{{img}}" style="width:100%; height:170px;"></span>
+                                 </div>
+                              </label>
+                           </div>
+                           </td>
+                        {# if the the forloop counter is divisible by 4, close the <li> tag and open a new one #}
+                           {% if forloop.counter|divisibleby:4 %}
+                           </tr>
+                           <tr>
+                           {% endif %}
+                        {% endfor %}
                       </tr>
                      </table>
                   </td>
                </tr>
                <tr>
-               <td style='text-align:Right; vertical-align: center; padding-bottom:4px; padding-right:10px;'>
-               <img style="float:Left;margin-left:10px;" src="/static/images/logo/option_icon.png" width="114" height="30px;" >
-               <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:100px; height:40px; background:#4e94e9; border-radius:5px;'>SUBMIT</button>
+               <td style='text-align:Right; vertical-align: center; padding-bottom:4px; padding-left:3%; padding-right:3%;'>
+               <img style="float:Left; vertical-align:middle;" src="/static/images/logo/option_icon.png" width="21%" height="40px;" >
+               <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-size:20px; font-weight:bold; width:20%; height:50px; background:#4e94e9; border-radius:5px;'>SUBMIT</button>
                </td>
                </tr>
             </table>

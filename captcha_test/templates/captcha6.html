@@ -50,7 +50,7 @@
       </style>
    </head>
    <body>
-      <div><img src="/static/images/logo/{{logo}}.jpg" width="180", height="100" class="img_logo" style='display:block; padding-top:20px; padding-bottom:10px; margin:0px auto;'/></div>
+      <div><img src="/static/images/logo/{{logo}}.jpg" class="img_logo" style='margin-left:auto; margin-right:auto;width:25%; display:block; padding-top:20px; padding-bottom:10px; margin-top:150px; margin-bottom:30px;'/></div>
       <div class="hidden_div">
          <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
@@ -64,32 +64,32 @@
                </tr>
             </table> -->
             <br>
-            <table class="hidden_table" style="border: 5px solid #820300; width: 700px; height: 350px;  border-radius:20px;">
-               <tr>
+            <table class="hidden_table" style="border: 5px solid #820300; width: 40%; height: 500px;  border-radius:20px;margin-left:auto; margin-right:auto;">
+               <tr style="height:55%;">
                   <td colspan="2" style="background:#820300;">
-                     <img src="{{capt}}" width="680", height="200" class="capt_img" style="border-radius:20px; padding-top:8px;"/>
+                     <img src="{{capt}}" width="95%", height="90%" class="capt_img" style="border-radius:20px; padding-top:8px;"/>
                   </td>
                   <td style="background:#820300;">
                   </td>
                </tr>
-               <tr>
+               <tr style="height:25%;">
                   <td style="margin:5px;border: 5px solid#820300; border-radius:20px;height:100px; background:#ffe07e; padding-left:10px;">
-                     <input type="text" style='border:2px solid #7186bb; height:50px;' class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
+                     <input type="text" style='font-size:25px; border:2px solid #7186bb; width:90%;height:60%;' class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
                   </td>
-                  <td style="background:#820300;border: 5px solid#820300;"><img src="/static/images/logo/recaptcha_icon.png" width="280", height="80" class="capt_icon" style="border:0;"></td>
+                  <td style="background:#820300;border: 5px solid#820300;"><img src="/static/images/logo/recaptcha_icon.png" width="100%", height="100" class="capt_icon" style="border:0;"></td>
                </tr>
                <tr>
                </tr>
                <tr style="background-color:white; border:5px solid white; border-top:5px solid #820300;">
-                  <td colspan="2" style='text-align:Left; vertical-align: center; padding:10px;'>
-                     <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:100px; height:40px; font-size:18px; background:#7186bb; border-radius:5px;'>SUBMIT</button>
+                  <td colspan="2" style='text-align:Left; vertical-align: center;'>
+                     <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:18%; height:50%; font-size:18px; background:#7186bb; border-radius:5px;'>SUBMIT</button>
                   </td>
                   <td style="border-top:5px solid #820300;"></td>
                </tr>
             </table>
             <br>
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
-               <div style="width:500px; margin-left:auto; margin-right:auto; margin-bottom:300px;" class="simple-keyboard"></div>
+               <div style="width:35%; margin-left:auto; margin-right:auto; margin-bottom:300px;" class="simple-keyboard"></div>
                <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
                <script src="src/index.js"></script>
          </form>

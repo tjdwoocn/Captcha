@@ -16,7 +16,6 @@
             margin: 0px auto;
          }
          table {
-            width: 100%;
             margin: 0px auto;
          }
          #img_table td{
@@ -47,7 +46,7 @@
       </style>
    </head>
    <body>
-      <div><img src="/static/images/logo/{{logo}}.jpg" width="210", height="80" class="img_logo" style='display:block; margin:10px auto;'/></div>
+      <div><img src="/static/images/logo/{{logo}}.jpg" class="img_logo" style='margin-left:auto; margin-right:auto;width:27%; display:block; margin-top:150px; margin-bottom:1%;'/></div>
       <div class="hidden_div">
          <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
@@ -61,31 +60,31 @@
                </tr>
             </table> -->
             <br>
-            <table class="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 700px; height: 450px;background:#898989; border-radius:20px;">
+            <table class="hidden_table" style="border: 2px solid rgb(226, 226, 226); width: 45%; background:#898989; border-radius:20px;">
                <tr>
                   <td>
-                     <table style="border: 2px solid #586893; width: 670px; height: 270px; background:#ffffff">
-                        <tr style=" background: #7186bb; height:45px;">
-                           <td style="color:rgb(226, 226, 226);font-size:25px; font-weight:bold; padding-left:10px;">
+                     <table style="border: 2px solid #586893; width: 97%; background:#ffffff">
+                        <tr style=" background: #7186bb; height:10%;">
+                           <td style="color:rgb(226, 226, 226);font-size:25px; font-weight:bold; padding-left:15px;">
                               Security Check
                            </td>
                         </tr>
-                        <tr style="height:50px;">
-                           <td style="padding-left:10px;font-size:20px;">
+                        <tr style="width:95%;">
+                           <td style="padding-left:15px;font-size:25px;">
                               Enter both words below, separated by a space.
                            </td>
                         </tr>
                         <tr>
-                           <td style="padding-left:10px;">
-                              <img src="{{capt}}" width="555", height="180" class="capt_img"/>
+                           <td>
+                              <img src="{{capt}}" width="92%" height="200" class="capt_img"/>
                            </td>
                         </tr>
                         <tr style="height:50px;">
-                           <td style="padding-left:10px; font-size:20px; ">Text in the box :  <input type="text" style='border:2px solid #7186bb; height:40px;' class="input" name="captcha" size=40 maxlength=30 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'">
+                           <td style="padding-left:10px; font-size:25px; ">Text in the box :  <input type="text" style='border:2px solid #7186bb; width:60%; height:40px;' class="input" name="captcha" size=40 maxlength=30 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'">
                            </td>
                         </tr>
                         <tr>
-                           <td style='text-align:Right; vertical-align: center; padding-bottom:10px; padding-right:10px;'>
+                           <td style='text-align:Right; vertical-align: center; padding-bottom:10px; padding-right:25px;'>
                               <button type="submit" class="btn btn-primary" style='vertical-align: center;color:white;font-weight:bold; width:100px; height:40px; font-size:18px; background:#7186bb; border-radius:5px;'>SUBMIT</button>
                            </td>
                         </tr>
@@ -95,7 +94,7 @@
             </table>
             <br>
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
-               <div style="width:500px; margin-left:auto; margin-right:auto; margin-bottom:300px;" class="simple-keyboard"></div>
+               <div style="width:35%; margin-left:auto; margin-right:auto; margin-bottom:300px;" class="simple-keyboard"></div>
                <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
                <script src="src/index.js"></script>
          </form>
