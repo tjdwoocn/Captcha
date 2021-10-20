@@ -52,7 +52,7 @@
       width:90px;
       height:90px 
       }
-      @media only screen and (max-width: 480px) {
+      @media only screen and (max-device-width: 480px) {
       /* For mobile phones: */
       [class*="container"] {
         margin: 0px;
@@ -85,6 +85,44 @@
       height:50px 
       }
       }
+
+      @media only screen and (min-device-width : 600px) and (orientation : portrait) {
+        /* ipad-vertical */
+        [class*="container"] {
+          margin: 0px auto;
+          margin-top:400px;
+          padding-top:0px;
+        }
+        
+        [class*="checkbox-table"] {
+          width: 60%;
+          margin:100px auto; 
+          margin-bottom:40px;
+        }
+        
+        [class*="gif_image"] {
+          width: 85%;
+          margin-top: 100px;
+        }
+        
+        input[type="checkbox"]{
+        width:100px;  
+        vertical-align: middle;
+        }
+        
+        [class*="form-check-label"] {
+          text-align:center; 
+          vertical-align:top; 
+          font-size:40px; 
+          font-weight:bold;
+        }
+        [class*="capt_logo"] {
+        width:130px;
+        height:130px 
+        }
+        }
+
+
 		</style>
   </head>
   <body>

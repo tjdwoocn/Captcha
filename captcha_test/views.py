@@ -175,9 +175,8 @@ def captcha(request):
 
         capt = random.choice(capt_list)
         filepath = text_captcha(capt, str_word)
-
+        logo_list = ["amazon", "naver", "google", "facebook"]
         if capt_page == "captcha5.html":
-            logo_list = ["amazon"]
             global logo
             logo = random.choice(logo_list)
 
@@ -186,14 +185,12 @@ def captcha(request):
             )
 
         elif capt_page == "captcha6.html":
-            logo_list = ["google"]
             logo = random.choice(logo_list)
 
             return render(
                 request, "captcha6.html", {"capt": filepath, "logo": logo}
             )
         elif capt_page == "captcha7.html":
-            logo_list = ["facebook"]
             logo = random.choice(logo_list)
 
             return render(
