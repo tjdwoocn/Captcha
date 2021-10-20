@@ -18,7 +18,7 @@ import os
 from captcha_test.models import TextCaptcha, ImageCaptcha
 
 # 3D modeling
-from random import uniform, shuffle
+from random import uniform, shuffle, randint
 from PIL import ImageFont, Image, ImageDraw
 import numpy
 import pylab
@@ -150,6 +150,7 @@ def captcha(request):
         if len(str_word) > 7:
             capt_list = [
                 "ICaptcha",
+                "Gimpy",
             ]
         else:
             if len(str_word) > 6:
@@ -157,9 +158,6 @@ def captcha(request):
                     "OnecolorCaptcha",
                     "MulticolorCaptcha",
                     "GraycolorCaptcha",
-                    "BluredCaptcha",
-                    "ContouredCaptcha",
-                    "EmbosedCaptcha",
                     "EdgedCaptcha",
                     "3dCaptcha",
                 ]
@@ -300,6 +298,65 @@ def slice_img(img_path, input, xPieces, yPieces, save_dir):
     return img_paths
 
 
+def makeGimpyImage(text):
+    text = text.lower()
+    text_splited = text.split(" ")
+
+    gimpy_path = "./static/images/gimpy/"
+    gimpy_lists = os.listdir(gimpy_path)
+    gimpy = Image.open(os.path.join(gimpy_path, random.choice(gimpy_lists)))
+    FONTS_PATH = "static/fonts"
+    fonts_lists = []
+
+    for root, directories, files in os.walk(FONTS_PATH, topdown=True):
+        for file in files:
+            f_name, f_ext = os.path.splitext(file)
+            if f_ext == ".ttf":
+                fonts_lists.append(os.path.join(root, file))
+
+    font = ImageFont.truetype(random.choice(fonts_lists), 42)
+    draw = ImageDraw.Draw(gimpy)
+
+    if len(text_splited) > 1:
+        width1 = 0
+        width2 = 40
+        for i in range(len(text_splited)):
+            width = randint(width1, width2)
+            height = randint(0, 140)
+            draw.text(
+                (width, height), text_splited[i], (255, 255, 255), font=font
+            )
+            width1 += 100
+            width2 += 170
+    else:
+        width = randint(0, 80)
+        height = randint(0, 140)
+        draw.text((width, height), text_splited[0], (255, 255, 255), font=font)
+
+    filepath = "static/images/captcha/{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
+    )
+
+    color_lists = [
+        "#E0D7FF",
+        "#FFCCE1",
+        "#D7EEFF",
+        "#FAFFC7",
+        "#ffb3ba",
+        "#ffdfba",
+        "#ffffba",
+        "#baffc9",
+        "#bae1ff",
+    ]
+    line_color = random.choice(color_lists)
+    create_noise_curve(gimpy, line_color)
+    add_rand_line_to_image(gimpy, line_color=line_color)
+
+    gimpy.save(filepath)
+
+    return filepath
+
+
 def makeImage(text, width=512, height=200, angle=None):
     angle = angle if angle != None else uniform(-50, 10)
     try:
@@ -349,6 +406,9 @@ def text_captcha(capt, str_word):
 
         # write the image on the given file and save it
         image.write(capt_text, filepath)
+
+    elif capt == "Gimpy":
+        filepath = makeGimpyImage(str_word)
 
     elif capt == "OnecolorCaptcha":
         # Captcha image size number (2 -> 640x360)
@@ -534,6 +594,74 @@ def text_captcha(capt, str_word):
         filepath = makeImage(str_word)
 
     return filepath
+
+
+def add_rand_line_to_image(
+    image, line_width=2, line_color="rgb(224, 187, 228)"
+):
+    """Draw a random line to a PIL image."""
+    # Get line random start position
+    line_x0 = randint(0, image.width)
+    line_y0 = randint(0, image.height)
+    # If line x0 is in center-to-right
+    if line_x0 >= image.width / 2:
+        # Line x1 from 0 to line_x0 position - 20% of image width
+        line_x1 = randint(0, line_x0 - int(0.2 * image.width))
+    else:
+        # Line x1 from line_x0 position + 20% of image width to max image width
+        line_x1 = randint(line_x0 + int(0.2 * image.width), image.width)
+    # If line y0 is in center-to-bottom
+    if line_y0 >= image.height / 2:
+        # Line y1 from 0 to line_y0 position - 20% of image height
+        line_y1 = randint(0, line_y0 - int(0.2 * image.height))
+    else:
+        # Line y1 from line_y0 position + 20% of image height to max image height
+        line_y1 = randint(line_y0 + int(0.2 * image.height), image.height)
+    # Generate a rand line color if not provided
+    # if line_color == "notSet":
+    #     line_color = "rgb({}, {}, {})".format(
+    #         str(randint(0, 255)), str(randint(0, 255)), str(randint(0, 255))
+    #     )
+    # Get image draw interface and draw the line on it
+    draw = ImageDraw.Draw(image)
+    draw.line(
+        (line_x0, line_y0, line_x1, line_y1),
+        fill=line_color,
+        width=line_width,
+    )
+
+
+def add_rand_horizontal_line_to_image(
+    image, line_width=2, line_color="rgb(224, 187, 228)"
+):
+    """Draw a random line to a PIL image."""
+    # Get line random start position (x between 0 and 20% image width; y with full height range)
+    x0 = randint(0, int(0.2 * image.width))
+    y0 = randint(0, image.height)
+    # Get line end position (x1 symetric to x0; y random from y0 to image height)
+    x1 = image.width - x0
+    y1 = randint(y0, image.height)
+    # Generate a rand line color if not provided
+    # if line_color == "notSet":
+    #     line_color = "rgb({}, {}, {})".format(
+    #         str(randint(0, 255)), str(randint(0, 255)), str(randint(0, 255))
+    #     )
+    # Get image draw interface and draw the line on it
+    draw = ImageDraw.Draw(image)
+    draw.line((x0, y0, x1, y1), fill=line_color, width=5)
+
+
+def create_noise_curve(image, color):
+    w, h = image.size
+    x1 = random.randint(0, int(w / 5))
+    x2 = random.randint(w - int(w / 5), w)
+    y1 = random.randint(int(h / 5), h - int(h / 5))
+    y2 = random.randint(y1, h - int(h / 5))
+    points = [x1, y1, x2, y2]
+    end = random.randint(160, 200)
+    start = random.randint(0, 20)
+    ImageDraw.Draw(image).arc(points, start, end, fill=color)
+    return image
 
 
 def captcha5(request):
