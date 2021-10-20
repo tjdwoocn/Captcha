@@ -3,37 +3,34 @@
 <html lang="en">
    <head>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
-
       <!-- Required meta tags -->
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta charset="utf-8">
       <!-- Bootstrap CSS -->
-
       <title>CAPTCHA</title>
       <style>
-        img {
-            display: block;
-            margin: 0px auto;
+         img {
+         display: block;
+         margin: 0px auto;
          }
          .container_logo{
-          margin-top:80px;
-          display:block;
-          margin-bottom:10px;
+         margin-top:80px;
+         display:block;
+         margin-bottom:10px;
          }
          .img_logo{
          width:15%;
          height:50px;
-         
          }
          .hidden_table{
          border: 2px solid rgb(226, 226, 226); 
          width: 50%; 
-         height: 100px;
          }
          .info_icon{
-         width: 25%;
-         height: 25%;
-
+         padding-top:20px;
+         margin-right:0px;
+         margin-left:20px;
+         width: 20%;
          }
          .info_td_1{
          color: rgb(112, 111, 111); 
@@ -48,16 +45,16 @@
          font-size:13px;
          }
          .hidden_table2{
-           border: 2px solid rgb(226, 226, 226); 
-           width: 50%;
-           height: 400px; 
-           margin-top:5px;
+         border: 2px solid rgb(226, 226, 226); 
+         width: 50%;
+         height: 450px; 
+         margin-top:5px;
          }
          .captcha_table{
          border: 2px solid rgb(226, 226, 226);
-          width: 95%; 
-          height: 180px; 
-          margin:10px auto;
+         width: 95%; 
+         height: 350px; 
+         margin:10px auto;
          }
          .captcha_info_td{
          color: rgb(109, 109, 109);
@@ -70,7 +67,7 @@
          }
          .capt_img{
          width:95%;
-         height: 160px;
+         height: 200px;
          }
          .class_input{
          font-size:15px; 
@@ -78,91 +75,86 @@
          width:85%;
          }
          .input{
-         font-size:18px;
+         font-size:20px;
          border:2px solid #7186bb;
-         width:90%;
-         height:60%;'
+         width:80%;
+         height:80%;'
          }
          .submit_td{
-          text-align:center; 
-          padding-bottom:10px;
+         text-align:center; 
+         padding-bottom:10px;
          }
          .submit_btn{
          background:#fad270;
          border:1px solid #c1ac81;
          color:rgb(85, 84, 84);
          font-weight:bold;
-          width:40%; 
-          height:25px;
-          border-radius:5px; 
-          font-size:18px;
+         width:30%; 
+         height:30px;
+         border-radius:5px; 
+         font-size:20px;
          }
-
-         
          .hidden_div{
-            width:100%;
-            height:100%;
-            animation-duration: 1s;
-            animation-name: autoplay1
+         width:100%;
+         height:100%;
+         animation-duration: 1s;
+         animation-name: autoplay1
          }
          @keyframes autoplay1 {
-            from {
-               opacity:0;
-            }
-
-            to {
-               opacity: 100;
-            }
+         from {
+         opacity:0;
          }
-
+         to {
+         opacity: 100;
+         }
+         }
          table {
-            width: 100%;
-            margin: 0px auto;
-            margin-left: auto;
-            margin-right: auto;
+         width: 100%;
+         margin: 0px auto;
+         margin-left: auto;
+         margin-right: auto;
          }
          #wrapper{
-            width: 30px;
-            height:30px;
-            position:relative;
+         width: 30px;
+         height:30px;
+         position:relative;
          }
          #refresh_btn{
-            width:100%;
-            height:100%;
-            position:absolute;
-            background:none;
-            padding:15px;
+         width:100%;
+         height:100%;
+         position:absolute;
+         background:none;
+         padding:15px;
          }
          #refresh_btn_img{
-            width: 30px;
-            height:30px;
+         width: 30px;
+         height:30px;
          }
          .input::placeholder {
-            color:rgb(168, 168, 168);
-            font-weight: bold;
+         color:rgb(168, 168, 168);
+         font-weight: bold;
          }
          .btn btn-primary{
-            transition-duration: 0.4s;
+         transition-duration: 0.4s;
          }
          .button1{
-            box-shadow: 0 3px 10px 0 #d1b778, 0 2px 12px 0 #c1ac81;
+         box-shadow: 0 3px 10px 0 #d1b778, 0 2px 12px 0 #c1ac81;
          }
          @media only screen and (max-width: 480px) {
          /* For mobile phones: */
-        img {
-            display: block;
-            margin: 0px auto;
+         img {
+         display: block;
+         margin: 0px auto;
          }
          .container_logo{
-          margin-top:30px;
-          display:block;
-          margin-bottom:10px;
+         margin-top:30px;
+         display:block;
+         margin-bottom:10px;
          }
          .img_logo{
          margin-bottom:0px;
          width:40%;
          height:60px;
-         
          }
          .hidden_table{
          border: 2px solid rgb(226, 226, 226); 
@@ -189,16 +181,16 @@
          font-size:13px;
          }
          .hidden_table2{
-           border: 2px solid rgb(226, 226, 226); 
-           width: 90%;
-           height: 160px; 
-           margin-top:0px;
+         border: 2px solid rgb(226, 226, 226); 
+         width: 90%;
+         height: 160px; 
+         margin-top:0px;
          }
          .captcha_table{
          border: 2px solid rgb(226, 226, 226);
-          width: 95%; 
-          height: 180px; 
-          margin:10px auto;
+         width: 95%; 
+         height: 180px; 
+         margin:10px auto;
          }
          .captcha_info_td{
          color: rgb(109, 109, 109);
@@ -225,26 +217,153 @@
          height:60%;'
          }
          .submit_td{
-          text-align:center; 
-          padding-bottom:10px;
+         text-align:center; 
+         padding-bottom:10px;
          }
          .submit_btn{
          background:#fad270;
          border:1px solid #c1ac81;
          color:rgb(85, 84, 84);
          font-weight:bold;
-          width:40%; 
-          height:25px;
-          border-radius:5px; 
-          font-size:18px;
+         width:40%; 
+         height:25px;
+         border-radius:5px; 
+         font-size:18px;
+         }
          }
          @media only screen and (min-device-width : 600px) and (orientation : portrait) {
-          /* ipad-vertical */
-         
-          
-          }
-
-
+         /* ipad-vertical */
+         img {
+            display: block;
+            margin: 0px auto;
+            }
+         .container_logo{
+         margin-top:80px;
+         display:block;
+         margin-bottom:10px;
+         }
+         .img_logo{
+         width:15%;
+         height:50px;
+         }
+         .hidden_table{
+         border: 2px solid rgb(226, 226, 226); 
+         width: 50%; 
+         height: 100px;
+         }
+         .info_icon{
+         width: 25%;
+         height: 25%;
+         }
+         .info_td_1{
+         color: rgb(112, 111, 111); 
+         font-size:18px;
+         font-weight:bold;
+         padding-top:5px;
+         }
+         .info_td_2{
+         color: rgb(112, 111, 111); 
+         font-weight:bold; 
+         padding-bottom:5px;
+         font-size:13px;
+         }
+         .hidden_table2{
+         border: 2px solid rgb(226, 226, 226); 
+         width: 50%;
+         height: 400px; 
+         margin-top:5px;
+         }
+         .captcha_table{
+         border: 2px solid rgb(226, 226, 226);
+         width: 95%; 
+         height: 180px; 
+         margin:10px auto;
+         }
+         .captcha_info_td{
+         color: rgb(109, 109, 109);
+         text-align:left;
+         font-weight:bold; 
+         vertical-align:middle; 
+         font-size:18px; 
+         margin-left:10px;
+         padding:5px;
+         }
+         .capt_img{
+         width:95%;
+         height: 160px;
+         }
+         .class_input{
+         font-size:15px; 
+         border:2px solid #7186bb; 
+         width:85%;
+         }
+         .input{
+         font-size:18px;
+         border:2px solid #7186bb;
+         width:90%;
+         height:60%;'
+         }
+         .submit_td{
+         text-align:center; 
+         padding-bottom:10px;
+         }
+         .submit_btn{
+         background:#fad270;
+         border:1px solid #c1ac81;
+         color:rgb(85, 84, 84);
+         font-weight:bold;
+         width:40%; 
+         height:25px;
+         border-radius:5px; 
+         font-size:18px;
+         }
+         .hidden_div{
+         width:100%;
+         height:100%;
+         animation-duration: 1s;
+         animation-name: autoplay1
+         }
+         @keyframes autoplay1 {
+         from {
+         opacity:0;
+         }
+         to {
+         opacity: 100;
+         }
+         }
+         table {
+         width: 100%;
+         margin: 0px auto;
+         margin-left: auto;
+         margin-right: auto;
+         }
+         #wrapper{
+         width: 30px;
+         height:30px;
+         position:relative;
+         }
+         #refresh_btn{
+         width:100%;
+         height:100%;
+         position:absolute;
+         background:none;
+         padding:15px;
+         }
+         #refresh_btn_img{
+         width: 30px;
+         height:30px;
+         }
+         .input::placeholder {
+         color:rgb(168, 168, 168);
+         font-weight: bold;
+         }
+         .btn btn-primary{
+         transition-duration: 0.4s;
+         }
+         .button1{
+         box-shadow: 0 3px 10px 0 #d1b778, 0 2px 12px 0 #c1ac81;
+         }
+         }
       </style>
    </head>
    <body>
@@ -279,8 +398,7 @@
                            </tr>
                            <tr>
                               <td class="submit_td">
-                           <input type="text" class="input" name="captcha" size=2  maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
-
+                                 <input type="text" class="input" name="captcha" size=2  maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
                               </td>
                            </tr>
                            <tr>
@@ -295,11 +413,9 @@
                   </tr>
                </table>
                <br>
-
             </div>
          </form>
       </div>
-      
       <script>
          var canvas = document.getElementById("myCanvas");
          var ctx = canvas.getContext("text("2d");
@@ -309,10 +425,9 @@
          ctx.textAlign = "center";
          ctx.fillText("{{capt}}", canvas.width/2, canvas.height/2);
       </script>
-      
       <script>
          const Keyboard = window.SimpleKeyboard.default;
-
+         
          const myKeyboard = new Keyboard({
          onChange: input => onChange(input),
          onKeyPress: button => onKeyPress(button)
@@ -329,7 +444,6 @@
          console.log("Button pressed", button);
          }
       </script>
-
       <!-- <script>
          var checkbox = document.querySelector("input[type=checkbox]");
          const box = document.querySelector('.hidden_div');
@@ -345,8 +459,7 @@
          
            }
          });
-      </script> -->
-
+         </script> -->
       {% comment %} <script>
          function toggleBoxVisibility(){
            if (document.getElementById("cb1").checked == true){
@@ -359,7 +472,6 @@
            }
          }
       </script> {% endcomment %}
-
       <!-- Optional JavaScript; choose one of the two! -->
       <!-- Option 1: Bootstrap Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

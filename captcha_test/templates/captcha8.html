@@ -286,6 +286,144 @@
         
         }
         
+        @media only screen and (min-device-width : 600px) and (orientation : portrait) {
+         /* ipad-vertical */
+         img {
+            display: block;
+            margin: 0px auto;
+            }
+            table {
+               margin: 0px auto;
+            }
+            .main_container{
+            margin-right:0px auto;
+            margin-left: 0px auto;
+            margin-top:300px;
+            }
+            .img_logo{
+            width:50%; 
+            height:25%;
+            margin-bottom:60px;
+            }
+            .hidden_table{
+               background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+               border: 2px solid rgb(226, 226, 226);
+                width: 95%; 
+                height: 1000px;
+                margin-bottom:300px;
+               animation-duration: 1s;
+               animation-name: autoplay1
+            }
+            @keyframes autoplay1 {
+               from {
+                  opacity:0;
+               }
+   
+               to {
+                  opacity: 100;
+               }
+            }
+            .info_table{
+             border: 2px solid rgb(226, 226, 226); 
+             background:#4e94e9; 
+             width: 80%;
+             height: 135px; 
+             margin:5px auto;
+            }
+            .info_td_1{
+            color: #ffffec;
+            text-align:left;
+            font-weight:bold; 
+            vertical-align:middle; 
+            font-size:32px; 
+            padding-left:20px; 
+            padding-top:15px; 
+            }
+            .info_td_2{
+            color: #ffffec;
+            text-align:left;
+            font-weight:bold; 
+            vertical-align:middle; 
+            font-size:55px; 
+            padding-left:20px;
+            }
+            .info_td_3{
+            color: #ffffec;
+            text-align:left;
+            font-weight:bold; 
+            vertical-align:middle; 
+            font-size:19px; 
+            padding-left:20px; 
+            padding-bottom:20px; 
+            }
+       
+            .img_table{
+            border: 2px solid rgb(226, 226, 226);
+            width:95%; 
+            height:690px; 
+            }
+            .img_table td{
+               border:none;
+            }
+            
+            .row {
+               display: grid;
+               grid-template-columns: 1fr;
+               margin-left:0px;
+               width:100%
+               <!-- width:120px; -->
+               <!-- border-width:0px; -->
+            }
+            .row label {
+               cursor: pointer;
+               padding:0px;
+               <!-- padding-right:0px; -->
+               width:100%;
+            }
+            .row label input[type="checkbox"] {
+               display: none;
+               <!-- padding:0px; -->
+               width:100%;
+            }
+            .row label .icon-box {
+               width: 100%;
+               flex-direction: column;
+               align-items: center;
+               background-color: #fff;
+               border-radius: 1px;
+               transition: 0.5s;
+               user-select: none;
+               padding: 3px;
+            }
+            .row label input[type="checkbox"]:checked ~ .icon-box {
+               background: linear-gradient(138deg, #da2c4d, #f8ab37);
+            }
+            
+            .option_td{
+            text-align:Right;
+             vertical-align: center;
+              padding-bottom:2%;
+               padding-left:3%;
+                padding-right:3%;
+            }
+            .option_img{
+            float:Left; 
+            vertical-align:middle;
+            width:23%;
+            }
+           .submit_btn{
+           vertical-align: 
+           center;color:white;
+           font-size:28px; 
+           font-weight:bold; 
+           width:20%; 
+           height:60px;
+            background:#4e94e9; 
+            border-radius:5px;
+           }
+           
+      }
+
       </style>
    </head>
    <body>
