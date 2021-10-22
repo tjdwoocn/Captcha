@@ -13,6 +13,11 @@
 <style>
     .hidden_table {
         border: 2px solid #099999;
+        background: #ffffff;
+    }
+    
+    .info_td {
+        background: #6c85b5;
     }
 </style>
 
@@ -23,30 +28,27 @@
         <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
             <table class="hidden_table">
                 <tr>
-                    <td colspan=2 class="id_td">Username</td>
+                    <td colspan=2 class="info_td">Security Check</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="id_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
                 </tr>
+
                 <tr>
-                    <td colspan=2 class="pw_td">Password</td>
-                </tr>
-                <tr>
-                    <td colspan=2 class="pw_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2>Can't find the text above?<br>Try another text or an audio CAPTCHA</td>
 
                 </tr>
                 <tr>
-
-                    <td class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
-                    <td class="option_img_td"> <img src="/static/images/logo/option_logo2.png" class="option_logo" /></td>
-
+                    <td colspan=2>Text in the box:<br><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2>What's this?</td>
                 </tr>
                 <tr>
-                    <td class="cb_td"><input class="remember_cb" type="checkbox" name="selected" /></td>
-                    <td class="submit_td"><button type="submit" class="submit_btn">SUBMIT</button></td>
+                    <td colspan=2> If you think you're seeing this by mistake, please let us know.</td>
+                </tr>
+                <tr>
+                    <td colspan=2 class="cb_td"><button type="submit" class="submit_btn">SUBMIT</button><button type="submit" class="submit_btn">Cancel</button></td>
                 </tr>
 
             </table>

@@ -1,0 +1,399 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script language="JavaScript">
+
+    function nextWin()
+
+    {location = "/"}
+
+    </script>
+    <title>CAPTCHA</title>
+    <style>
+      img {
+        display: block;
+        margin: 0px auto;
+      }
+
+      table {
+        margin: 0px auto;
+      }
+
+      .main_container {
+        margin-right: 0px auto;
+        margin-left: 0px auto;
+        margin-top: 100px;
+      }
+
+      .img_logo {
+        width: 30%;
+        height: 25%;
+        margin-bottom: 30px;
+      }
+
+      .hidden_table {
+        border: 2px solid rgb(226, 226, 226);
+        width: 70%;
+        height: 400px;
+        background: #898989;
+        border-radius: 20px;
+      }
+
+      .captcha_table {
+        border: 2px solid #586893;
+        width: 97%;
+        height: 95%;
+        background: #ffffff
+      }
+
+      .security_td {
+        color: rgb(226, 226, 226);
+        font-size: 35px;
+        font-weight: bold;
+        padding-left: 20px;
+      }
+
+      .info_td {
+        padding-left: 15px;
+        font-size: 35px;
+      }
+
+      .capt_img {
+        width: 80%;
+        height: 250px;
+      }
+
+      .text_td {
+        padding-left: 10px;
+        height: 30px;
+        font-size: 30px;
+        vertical-align: top;
+      }
+
+      .input {
+        margin-top: 0px;
+        padding-top: 3px;
+        border: 2px solid #7186bb;
+        width: 70%;
+        height: 35px;
+        font-size: 32px;
+      }
+
+      .submit_td {
+        text-align: Right;
+        vertical-align: center;
+        padding-top: 2px;
+        padding-bottom: 10px;
+        padding-right: 25px
+      }
+
+      .submit_btn {
+        vertical-align: center;
+        color: white;
+        font-weight: bold;
+        width: 20%;
+        height: 50px;
+        font-size: 28px;
+        background: #7186bb;
+        border-radius: 5px;
+      }
+
+      #img_table td {
+        border: none;
+      }
+
+      .hidden_div {
+        animation-duration: 1s;
+        animation-name: autoplay1
+      }
+
+      @keyframes autoplay1 {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 100;
+        }
+      }
+
+      @media only screen and (max-device-width: 480px) {
+
+        /* For mobile phones: */
+        [class*="main_container"] {
+          margin-top: 40px;
+          margin-bottom: 0px;
+          padding-bottom: 0px;
+        }
+
+        [class*="img_logo"] {
+          margin-bottom: 0px;
+          width: 70%;
+          height: 20%;
+        }
+
+        [class*="hidden_div"] {
+          margin-left: auto;
+          margin-right: auto;
+          width: 100%;
+        }
+
+        .hidden_table {
+          border: 2px solid rgb(226, 226, 226);
+          width: 90%;
+          height: 350px;
+          background: #898989;
+          border-radius: 10px;
+        }
+
+        .captcha_table {
+          border: 2px solid #586893;
+          width: 95%;
+          height: 95%;
+          background: #ffffff
+        }
+
+        .security_td {
+          color: rgb(226, 226, 226);
+          font-size: 20px;
+          font-weight: bold;
+          padding-left: 10px;
+        }
+
+        .info_td {
+          padding-left: 10px;
+          font-size: 20px;
+        }
+
+        .capt_img {
+          width: 97%;
+          height: 160px;
+        }
+
+        .text_td {
+          padding-left: 10px;
+          height: 20px;
+          font-size: 20px;
+          vertical-align: top;
+        }
+
+        .input {
+          margin-top: 0px;
+          border: 2px solid #7186bb;
+          width: 90%;
+          height: 24px;
+          font-size: 22px;
+        }
+
+        .submit_td {
+          text-align: Right;
+          vertical-align: center;
+          padding-top: 2px;
+          padding-bottom: 10px;
+          padding-right: 10px margin-left:auto;
+          margin-right: auto;
+        }
+
+        .submit_btn {
+          vertical-align: center;
+          color: white;
+          font-weight: bold;
+          width: 30%;
+          height: 26px;
+          font-size: 15px;
+          background: #7186bb;
+          border-radius: 5px;
+        }
+      }
+
+      @media only screen and (min-device-width : 600px) and (orientation : portrait) {
+
+        /* ipad-vertical */
+        img {
+          display: block;
+          margin: 0px auto;
+        }
+
+        table {
+          margin: 0px auto;
+        }
+
+        .main_container {
+          margin-right: 0px auto;
+          margin-left: 0px auto;
+          margin-top: 300px;
+        }
+
+        .img_logo {
+          width: 50%;
+          height: 25%;
+          margin-bottom: 60px;
+        }
+
+        .hidden_table {
+          border: 2px solid rgb(226, 226, 226);
+          width: 90%;
+          height: 800px;
+          background: #898989;
+          border-radius: 20px;
+        }
+
+        .captcha_table {
+          border: 2px solid #586893;
+          width: 97%;
+          height: 95%;
+          background: #ffffff
+        }
+
+        .security_td {
+          color: rgb(226, 226, 226);
+          font-size: 35px;
+          font-weight: bold;
+          padding-left: 20px;
+        }
+
+        .info_td {
+          padding-left: 15px;
+          font-size: 35px;
+        }
+
+        .capt_img {
+          width: 97%;
+          height: 400px;
+        }
+
+        .text_td {
+          padding-left: 10px;
+          height: 30px;
+          font-size: 30px;
+          vertical-align: top;
+        }
+
+        .input {
+          margin-top: 0px;
+          padding-top: 3px;
+          border: 2px solid #7186bb;
+          width: 70%;
+          height: 35px;
+          font-size: 32px;
+        }
+
+        .submit_td {
+          text-align: Right;
+          vertical-align: center;
+          padding-top: 2px;
+          padding-bottom: 10px;
+          padding-right: 25px
+        }
+
+        .submit_btn {
+          vertical-align: center;
+          color: white;
+          font-weight: bold;
+          width: 20%;
+          height: 50px;
+          font-size: 28px;
+          background: #7186bb;
+          border-radius: 5px;
+        }
+
+        #img_table td {
+          border: none;
+        }
+
+        .hidden_div {
+          animation-duration: 1s;
+          animation-name: autoplay1
+        }
+
+        @keyframes autoplay1 {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 100;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body onLoad="setTimeout('nextWin()', 30000)">
+    <div class="main_container">
+      <img src="/static/images/logo/{{logo}}.jpg" class="img_logo" />
+    </div>
+    <div class="hidden_div">
+      <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
+        <table class="hidden_table">
+						<tr>
+							<td>
+								<table class=" captcha_table">
+          <tr style=" background: #7186bb; height:10%;">
+            <td class="security_td"> Security Check </td>
+          </tr>
+          <tr style="width:95%;">
+            <td class="info_td"> Enter the characters you see in this image: </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="{{capt}}" class="capt_img" />
+            </td>
+          </tr>
+          <tr style="height:30px;">
+            <td class="text_td">Text in the box : <input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'">
+            </td>
+          </tr>
+          <tr>
+            <td class="submit_td">
+              <button type="submit" class="submit_btn">SUBMIT</button>
+            </td>
+          </tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+        <br>
+        <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
+      </form>
+    </div>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.font = "30px Comic Sans MS";
+      ctx.fillStyle = "green";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      ctx.fillText("{{capt}}", canvas.width / 2, canvas.height / 2);
+    </script>
+    <!-- <script>
+         var checkbox = document.querySelector("input[type=checkbox]");
+         const box = document.querySelector('.hidden_table');
+         
+         checkbox.addEventListener('change', function() {
+           if (this.checked) {
+             box.classList.toggle('act');
+             document.getElementById("cb1").disabled="disabled";
+         
+           }
+           else{
+             document.getElementById("cb1").disabled=False;
+         
+           }
+         });
+         </script> -->
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+         -->
+  </body>
+</html>

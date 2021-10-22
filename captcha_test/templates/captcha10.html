@@ -23,30 +23,37 @@
         <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
             <table class="hidden_table">
                 <tr>
-                    <td colspan=2 class="id_td">Username</td>
+                    <td colspan=2 class="title_td">Match the Characters in the Picture</td>
+                    <td>Help</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="id_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=3 class="info_td">To start resetting your password, type your e-mail address and the characters shown in the picture below.</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="pw_td">Password</td>
-                </tr>
-                <tr>
-                    <td colspan=2 class="pw_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td class="email_td">E-mail address:</td>
+                    <td colspan=2 class="emaiil_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
 
                 </tr>
                 <tr>
-
+                    <td>Picture: </td>
                     <td class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
                     <td class="option_img_td"> <img src="/static/images/logo/option_logo2.png" class="option_logo" /></td>
 
                 </tr>
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td>The picture contains {{}} characters</td>
+                </tr>
+                <tr>
+                    <td>Characters:</td>
                     <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
                 </tr>
                 <tr>
-                    <td class="cb_td"><input class="remember_cb" type="checkbox" name="selected" /></td>
-                    <td class="submit_td"><button type="submit" class="submit_btn">SUBMIT</button></td>
+                    <td colspan=3 class="cb_td"><button type="submit" class="submit_btn">CANCLE</button><button type="submit" class="submit_btn">SUBMIT</button></td>
+                </tr>
+                <tr>
+                    <td colspan=3 class="companyInfo_img_td"> <img src="/static/images/logo/mpn_logo.png" class="companyInfo_img" /></td>
                 </tr>
 
             </table>

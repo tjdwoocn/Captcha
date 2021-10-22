@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script language="JavaScript">
+
+    function nextWin()
+
+    {location = "/"}
+
+    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="../../static/css/captcha8.css" rel="stylesheet" />
+    <title>CAPTCHA</title>
+</head>
+
+<body onLoad="setTimeout('nextWin()', 300000)">
+    <div class="main_container">
+        <img src="/static/images/logo/{{logo}}.jpg" class="img_logo" />
+    </div>
+    <div class="container">
+        <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
+            <table class="hidden_table">
+                <tr style="vertical-align: baseline; ">
+                    <td>
+                        <table class="info_table">
+                            <tr>
+                                <td class="info_td_1">Select all squares with</td>
+                                <tr>
+                                    <td class="info_td_2">{{capt}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="info_td_3"></td>
+                                </tr>
+                                <tr></tr>
+                        </table>
+                        <table class='img_table'>
+                            <tr>
+                                {% for img in sliced_img_paths %}
+                                <td>
+                                    <div class="row">
+                                        <label>
+                                     <input id="img_cb" type="checkbox" name="selected" value="{{capt}}_{{img}}" />
+                                     <div class="icon-box" >
+                                     <span><img src="{{img}}" class="icon_span"></span>
+                                     </div>
+                                  </label>
+                                    </div>
+                                </td>
+                                {% if forloop.counter|divisibleby:4 %}
+                            </tr>
+                            <tr>
+                                {% endif %} {% endfor %}
+                            </tr>
+                        </table>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td class="option_td">
+                            <img class="option_img" src="/static/images/logo/option_icon.png">
+                            <button type="submit" class="submit_btn">SUBMIT</button>
+                        </td>
+                    </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        var canvas = document.getElementById("myCanvas ");
+        var ctx = canvas.getContext("2d ");
+        ctx.font = "30px Comic Sans MS ";
+        ctx.fillStyle = "green ";
+        ctx.textBaseline = "middle ";
+        ctx.textAlign = "center ";
+        ctx.fillText("{{capt}} ", canvas.width / 2, canvas.height / 2);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ " crossorigin="anonymous "></script>
+</body>
+
+</html>
