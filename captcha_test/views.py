@@ -12,6 +12,7 @@ from PIL import Image, ImageOps, ImageFilter
 
 # time
 from datetime import datetime
+import time
 
 import os
 
@@ -125,6 +126,9 @@ word_list = [
     "6145mu",
 ]
 queue = deque(word_list)
+str_list = ['첫', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열',
+            '열한', '열두', '열세', '열네', '열다섯', '열여섯', '열일곱', '열여덟', '열아홉', '스물']
+str_list2 = ['첫', '두', '세', '네', '다섯', '여섯']
 
 
 def intro(request):
@@ -138,6 +142,12 @@ def captcha(request):
     global queue
     global str_word
     global logo
+    global right_str
+    global wrong_str
+    right_str = "시의 {} 번째 줄 {} 번째 단어는 남아있습니다.".format(
+        random.choice(str_list), random.choice(str_list2))
+    wrong_str = "시의 {} 번째 줄 {} 번째 단어는 사라졌습니다.".format(
+        random.choice(str_list), random.choice(str_list2))
     capt_page_list = [
         "captcha5.html",
         "captcha6.html",
@@ -217,26 +227,30 @@ def captcha(request):
                 logo = "amazon"
 
                 return render(
-                    request, "captcha5.html", {"capt": filepath, "logo": logo}
+                    request, "captcha5.html", {
+                        "str_word": str_word, "capt": filepath, "logo": logo, "right_str": right_str, "wrong_str": wrong_str}
                 )
 
             elif capt_page == "captcha6.html":
                 logo = random.choice(logo_list)
 
                 return render(
-                    request, "captcha6.html", {"capt": filepath, "logo": logo}
+                    request, "captcha6.html", {
+                        "str_word": str_word, "capt": filepath, "logo": logo, "right_str": right_str, "wrong_str": wrong_str}
                 )
             elif capt_page == "captcha7.html":
                 logo = "facebook"
 
                 return render(
-                    request, "captcha7.html", {"capt": filepath, "logo": logo}
+                    request, "captcha7.html", {
+                        "str_word": str_word, "capt": filepath, "logo": logo, "right_str": right_str, "wrong_str": wrong_str}
                 )
             elif capt_page == "captcha9.html":
                 logo = "facebook"
 
                 return render(
-                    request, "captcha9.html", {"capt": filepath, "logo": logo}
+                    request, "captcha9.html", {
+                        "str_word": str_word, "capt": filepath, "logo": logo, "right_str": right_str, "wrong_str": wrong_str}
                 )
 
             elif capt_page == "captcha10.html":
@@ -244,20 +258,21 @@ def captcha(request):
 
                 return render(
                     request, "captcha10.html", {
-                        "capt": filepath, "logo": logo, "capt_len": capt_len}
+                        "str_word": str_word,  "capt": filepath, "logo": logo, "capt_len": capt_len, "right_str": right_str, "wrong_str": wrong_str}
                 )
             elif capt_page == "captcha11.html":
                 logo = "facebook"
 
                 return render(
                     request, "captcha11.html", {
-                        "capt": filepath, "logo": logo,  "capt_len": capt_len}
+                        "str_word": str_word,  "capt": filepath, "logo": logo,  "capt_len": capt_len, "right_str": right_str, "wrong_str": wrong_str}
                 )
             elif capt_page == "captcha12.html":
                 logo = "facebook"
 
                 return render(
-                    request, "captcha12.html", {"capt": filepath, "logo": logo}
+                    request, "captcha12.html", {
+                        "str_word": str_word, "capt": filepath, "logo": logo, "right_str": right_str, "wrong_str": wrong_str}
                 )
             else:
                 return HttpResponse("<h4>No Return</h4>")
@@ -267,6 +282,7 @@ def captcha(request):
 
 def submit(request):
     global error_count
+
     if request.method == "POST":
         if capt_page == "captcha8.html":
             global selected
@@ -283,19 +299,23 @@ def submit(request):
             ).save()
 
             if str_word == response:
-                return render(request, "intro.html")
+                time.sleep(3)
+                return render(request, "intro.html", {"right_str": right_str, })
             else:
                 if error_count < 2:
                     error_count += 1
 
                     capt = random.choice(capt_list)
                     filepath = text_captcha(capt, str_word)
+                    time.sleep(3)
                     return render(
-                        request, capt_page, {"capt": filepath, "logo": logo}
+                        request, capt_page, {
+                            "str_word": str_word,  "capt": filepath, "logo": logo, "wrong_str": wrong_str}
                     )
                 else:
+                    time.sleep(3)
                     error_count = 0
-                    return render(request, "intro.html")
+                    return render(request, "intro.html", {"wrong_str": wrong_str})
 
     else:
         return render(request, "intro.html")
