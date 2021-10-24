@@ -4,31 +4,49 @@
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/dcode.css">
+    <link rel="stylesheet" href="/static/css/Keyboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script language="JavaScript">
+
+  function nextWin()
+
+  {location = "/"}
+
+  </script>
+
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        margin-top:200px;
+        margin-top:600px;
         margin-left:auto;
         margin-right:auto;
         border: 2px solid #ebebeb;
         padding:20px;
+	background:#dff5e7;
     }
     .id_td{
         color: #888888;
     }
-    .input{
+    .use-keyboard-input{
         height: 50px;
     }
     .pw_td{
         color: #888888;
     }
     .capt_img{
-        width:35px;
+        width:400px;
+        height:100px;
     }
     .option_img_td{
         text-align:right;
@@ -57,7 +75,7 @@
 
 </style>
 
-<body>
+<body onLoad="setTimeout('nextWin()', 30000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -83,7 +101,8 @@
 
                 </tr>
                 <tr>
-                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" style="margin-top:5px; border:2px solid #f3bf7b; width:50%; height:50px; font-size:28px;" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td class="cb_td"><input class="remember_cb" type="checkbox" name="selected" />Remember Me</td>
@@ -95,6 +114,7 @@
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
         </form>
     </div>
+    <script src="/static/js/keyboard.js"></script>
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");

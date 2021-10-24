@@ -2,49 +2,144 @@
 <!doctype html>
 <html lang="en">
 
+
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/dcode.css">
+    <link rel="stylesheet" href="/static/css/Keyboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script language="JavaScript">
+
+  function nextWin()
+
+  {location = "/"}
+
+  </script>
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
+        margin-top:600px;
+        margin-left:auto;
+        margin-right:auto;
         border: 2px solid #099999;
         background: #d5eef5;
     }
+    .title_tr{
+        background:#82cae0;
+
+    }
+    .title_td{
+        padding:20px;
+        font-size:30px;
+        font-weight: bold;
+    }
+    .help_td{
+        padding:20px;
+        text-align:right;
+        font-size:25px;
+        color:#309bb7;
+
+    }
+    .info_td{
+        font-size:25px;
+        padding:20px;
+    }
+    .capt_img_td{
+        text-align: right;
+    }
+    .capt_img{
+        width:600px;
+        height:200px;
+    }
+    .option_img_td{
+        padding:20px;
+        text-align:right;
+    }
+    .option_logo{
+        width:70px;
+    }
+    .capt_len_td{
+        font-size:20px;
+    }
+    .char_td{
+        padding:20px;
+        text-align: right;
+        font-size:25px;
+        font-weight: bold;
+    }
+    .response_input_td{
+        padding:20px;
+    }
+    .capt_img_td{
+        padding:20px;
+    }
+    .use-keyboard-input{
+        height:50px;
+        padding:20px;
+        width:100%;
+        padding:5px;
+        font-size:22px;
+        border-radius: 5px;
+    }
+
+    .cb_td{
+        margin-top:0px;
+        padding-top:0px;
+        padding:20px;
+        text-align:right;
+    }
+    .submit_btn{
+        border-radius: 5px;
+
+        margin-top:0px;
+        padding-top:0px;
+        border: 2px solid #748585;
+        background:#d5eef5;
+        font-size:25px;
+        font-weight: bold;
+        width:140px;
+    }
 </style>
 
-<body>
+
+<body onLoad="setTimeout('nextWin()', 30000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
         <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
             <table class="hidden_table">
-                <tr>
+                <tr class='title_tr'>
                     <td colspan=2 class="title_td">Match the Characters in the Picture</td>
-                    <td>Help</td>
+                    <td class="help_td">Help</td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="info_td">To start resetting your password, type your e-mail address and the characters shown in the picture below.</td>
+                    <td colspan=3 class="info_td">To continue, type the characters you see in the picture.</td>
                 </tr>
 
                 <tr>
-                    <td></td>
-                    <td class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
-                    <td class="option_img_td"> <img src="/static/images/logo/option_logo3.png" class="option_logo" /></td>
+                    <td colspan=2 class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
+                    <td class="option_img_td"> <img src="/static/images/logo/option_logo4.png" class="option_logo" /></td>
 
                 </tr>
                 <tr>
                     <td></td>
+                    <td class="capt_len_td">The picture contains {{capt_len}} characters.</td>
                     <td></td>
-                    <td>The picture contains {{}} characters.</td>
+
                 </tr>
                 <tr>
-                    <td>Characters:</td>
-                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td class="char_td">Characters:</td>
+                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" style="margin-top:5px; border:2px solid #3a484b; " name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan=3 class="cb_td"><button type="submit" class="submit_btn">SUBMIT</button></td>
@@ -55,6 +150,8 @@
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
         </form>
     </div>
+    <script src="/static/js/keyboard.js"></script>
+
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");

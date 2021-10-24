@@ -4,21 +4,114 @@
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/dcode.css">
+    <link rel="stylesheet" href="/static/css/Keyboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script language="JavaScript">
+
+  function nextWin()
+
+  {location = "/"}
+
+  </script>
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        border: 2px solid #099999;
+        margin-top:600px;
+        margin-left:auto;
+        margin-right:auto;
+        width:700px;
+        border: 2px solid #dfdfdf;
         background: #ffffff;
     }
-    
+    .capt_img_td{
+        padding:20px;
+    }
+    .capt_img{
+        width:600px;
+        height:200px;
+    }
     .info_td {
+
+        color:#ffffff;
+        padding-left:20px;
+        padding-top:10px;
+        padding-bottom:10px;
+        font-size:30px;
+        font-weight: bold;
         background: #6c85b5;
     }
+    .info2_td{
+        padding-top:0px;
+        padding-left:20px;
+        font-size:17px;
+        color:#afadad;
+    }
+    .info3_td{
+        padding-left:20px;
+        padding-right:20px;
+        font-size:23px;
+    }
+    .use-keyboard-input{
+        height:50px;
+        padding-left:20px;
+        padding-right:20px;
+        padding-bottom:0px;
+        width:100%;
+        padding:5px;
+        font-size:22px;
+        border-radius: 5px;    
+    }
+    .info4_td{
+        padding-top:0px;
+        padding-left:20px;
+        font-size:20px;
+        color:#7ea6d7;
+
+    }
+    .info5_td{
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:20px;
+        font-size:20px;
+
+    }
+    .cb_td{
+        border:2px solid #e6e6e6;
+        background:#f2f2f1;
+        padding-top:10px;
+        text-align: right;
+    }
+    .submit_btn{
+        width:100px;
+        height:32px;
+        font-size: 20px;
+        padding:5px;
+        background:#617aaf;
+        color:#ffffff;
+        font-weight:bold;
+
+    }
+    .cancle_btn{
+        width:100px;
+        height:32px;
+        font-size: 20px;
+        padding:5px;
+        background:#f1f1f0;
+        color:#787073;
+        font-weight:bold;
+    }
+
 </style>
 
 <body>
@@ -35,20 +128,20 @@
                 </tr>
 
                 <tr>
-                    <td colspan=2>Can't find the text above?<br>Try another text or an audio CAPTCHA</td>
+                    <td class="info2_td" colspan=2>Can't read the text above?<br>Try another text or an audio CAPTCHA</td>
 
                 </tr>
                 <tr>
-                    <td colspan=2>Text in the box:<br><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td class="info3_td" colspan=2>Text in the box:<br><textarea class="use-keyboard-input" style="margin-top:5px;" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea></td>
                 </tr>
                 <tr>
-                    <td colspan=2>What's this?</td>
+                    <td class="info4_td" colspan=2>What's this?</td>
                 </tr>
                 <tr>
-                    <td colspan=2> If you think you're seeing this by mistake, please let us know.</td>
+                    <td class="info5_td" colspan=2> If you think you're seeing this by mistake, please let us know.</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="cb_td"><button type="submit" class="submit_btn">SUBMIT</button><button type="submit" class="submit_btn">Cancel</button></td>
+                    <td colspan=2 class="cb_td"><button type="submit" class="submit_btn">SUBMIT</button><button type="submit" class="cancle_btn" name="submit_btn" disabled>Cancel</button></td>
                 </tr>
 
             </table>
@@ -56,6 +149,8 @@
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
         </form>
     </div>
+    <script src="/static/js/keyboard.js"></script>
+
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");

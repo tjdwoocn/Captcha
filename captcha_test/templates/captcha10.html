@@ -4,9 +4,24 @@
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/dcode.css">
+    <link rel="stylesheet" href="/static/css/Keyboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script language="JavaScript">
+
+  function nextWin()
+
+  {location = "/"}
+
+  </script>
     <title>CAPTCHA</title>
 </head>
 
@@ -14,7 +29,7 @@
     .hidden_table {
         margin-left:auto;
         margin-right:auto;
-        margin-top:300px;
+        margin-top:500px;
 
         border: 2px solid #adadad;
         width:700px;
@@ -85,7 +100,7 @@
     .response_input_td{
         padding:10px;
     }
-    .input{
+    .use-keyboard-input{
         width:100%;
         padding:5px;
         font-size:22px;
@@ -105,10 +120,13 @@
         margin:0px;
         border-top:2px solid #c1c1c1;
     }
+    .companyInfo_img{
+       width:100%;
+}
 
 </style>
 
-<body>
+<body onLoad="setTimeout('nextWin()', 30000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -134,11 +152,12 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td colspan=2 class="info2_td">The picture contains {{capt}} characters</td>
+                    <td colspan=2 class="info2_td">The picture contains {{capt_len}} characters</td>
                 </tr>
                 <tr>
                     <td class="response_td">Characters:</td>
-                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=35 maxlength=20 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" style="margin-top:5px; border:2px solid #f3bf7b; width:50%; height:50px; font-size:28px;" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan=3 class="cb_td"><button type="cancle" class="cancle_btn" disabled >CANCLE</button><button type="submit" class="submit_btn">SUBMIT</button></td>
@@ -152,6 +171,7 @@
             <!-- <input class="inputs" placeholder="Tap on the virtual keyboard to start" /> -->
         </form>
     </div>
+    <script src="/static/js/keyboard.js"></script>
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");

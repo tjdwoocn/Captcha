@@ -143,6 +143,11 @@ def captcha(request):
         "captcha6.html",
         "captcha7.html",
         "captcha8.html",
+        "captcha9.html",
+        "captcha10.html",
+        "captcha11.html",
+        "captcha12.html",
+
     ]
     if request.method == "POST":
         global capt_page
@@ -175,6 +180,7 @@ def captcha(request):
                 pass
             str_word = queue.popleft()
             global capt_list
+            capt_len = len(str_word)
             if len(str_word) > 7:
                 capt_list = [
                     "ICaptcha",
@@ -225,6 +231,33 @@ def captcha(request):
 
                 return render(
                     request, "captcha7.html", {"capt": filepath, "logo": logo}
+                )
+            elif capt_page == "captcha9.html":
+                logo = "facebook"
+
+                return render(
+                    request, "captcha9.html", {"capt": filepath, "logo": logo}
+                )
+
+            elif capt_page == "captcha10.html":
+                logo = "facebook"
+
+                return render(
+                    request, "captcha10.html", {
+                        "capt": filepath, "logo": logo, "capt_len": capt_len}
+                )
+            elif capt_page == "captcha11.html":
+                logo = "facebook"
+
+                return render(
+                    request, "captcha11.html", {
+                        "capt": filepath, "logo": logo,  "capt_len": capt_len}
+                )
+            elif capt_page == "captcha12.html":
+                logo = "facebook"
+
+                return render(
+                    request, "captcha12.html", {"capt": filepath, "logo": logo}
                 )
             else:
                 return HttpResponse("<h4>No Return</h4>")
@@ -747,6 +780,112 @@ def captcha7(request):
     filepath = text_captcha(capt, str_word)
 
     return render(request, "captcha7.html", {"capt": filepath, "logo": logo})
+
+
+def captcha9(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["facebook"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha9.html", {"capt": filepath, "logo": logo})
+
+
+def captcha10(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["facebook"]
+    global str_word
+    str_word = random.choice(word_list)
+    capt_len = len(str_word)
+    logo = random.choice(logo_list)
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha10.html", {"capt": filepath, "capt_len": capt_len, "logo": logo})
+
+
+def captcha11(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["facebook"]
+    global str_word
+    capt_len = len(str_word)
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha11.html", {"capt": filepath, "capt_len": capt_len, "logo": logo})
+
+
+def captcha12(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["facebook"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha12.html", {"capt": filepath, "logo": logo})
 
 
 def captcha8(request):
