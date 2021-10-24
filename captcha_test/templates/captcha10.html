@@ -12,8 +12,100 @@
 
 <style>
     .hidden_table {
-        border: 2px solid #099999;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:300px;
+
+        border: 2px solid #adadad;
+        width:700px;
+        border-spacing: 0;
     }
+    .title_td{
+        width:500px;
+        padding:10px;
+        font-size:24px;
+        font-weight:bold; 
+        background:#eeeeee;
+        border-bottom:2px solid #adadad;
+        border-spacing: 0;
+
+    }
+    .help_td{
+        padding:10px;
+        font-size:20px;
+        text-align:right;
+        color: #a3a3a3;
+        background:#eeeeee;
+        border-spacing: 0;
+        border-bottom:2px solid #adadad;
+    }
+    .info_td{
+        padding:13px;
+        font-size:18px;
+        font-weight:bold;
+    }
+    .email_td {
+        width:200px;
+        padding:10px;
+        text-align: right;
+        font-size:24px;
+        font-weight:bold;
+    }
+    .email_input_td{
+        padding:10px;
+    }
+    .email_input{
+        padding:5px;
+        font-size:22px;
+        width:100%;
+    }
+    .capt_td {
+        padding:10px;
+        text-align: right;
+        font-size:24px;
+        font-weight:bold;
+    }
+    .option_img_td{
+        text-align:right;
+    }
+    .option_logo{
+        padding:10px;
+        width:50px;
+    }
+    .response_td {
+        padding:10px;
+        text-align: right;
+        font-size:24px;
+        font-weight:bold;
+    }
+    .info2_td{
+        font-size:18px;
+        color:#a3a3a3;
+    }
+    .response_input_td{
+        padding:10px;
+    }
+    .input{
+        width:100%;
+        padding:5px;
+        font-size:22px;
+    }
+    .cb_td{
+        padding: 10px;
+        text-align: right;
+    }
+    button{
+        font-weight:bold;
+        width:100px;
+        font-size:20px;
+        padding:5px;
+        margin:10px;
+    }
+    .companyInfo_img_td{
+        margin:0px;
+        border-top:2px solid #c1c1c1;
+    }
+
 </style>
 
 <body>
@@ -24,33 +116,32 @@
             <table class="hidden_table">
                 <tr>
                     <td colspan=2 class="title_td">Match the Characters in the Picture</td>
-                    <td>Help</td>
+                    <td class="help_td">Help</td>
                 </tr>
                 <tr>
                     <td colspan=3 class="info_td">To start resetting your password, type your e-mail address and the characters shown in the picture below.</td>
                 </tr>
                 <tr>
                     <td class="email_td">E-mail address:</td>
-                    <td colspan=2 class="emaiil_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="email_input_td"><input type="text" class="email_input" name="captcha" disabled size=35 maxlength=20 placeholder=" abcde@naver.com" onfocus="this.placeholder=''" onblur="this.placeholder='abcde.naver.com'"></td>
 
                 </tr>
                 <tr>
-                    <td>Picture: </td>
+                    <td class="capt_td">Picture: </td>
                     <td class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
-                    <td class="option_img_td"> <img src="/static/images/logo/option_logo2.png" class="option_logo" /></td>
+                    <td class="option_img_td"> <img src="/static/images/logo/option_logo3.png" class="option_logo" /></td>
 
                 </tr>
                 <tr>
                     <td></td>
-                    <td></td>
-                    <td>The picture contains {{}} characters</td>
+                    <td colspan=2 class="info2_td">The picture contains {{capt}} characters</td>
                 </tr>
                 <tr>
-                    <td>Characters:</td>
-                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td class="response_td">Characters:</td>
+                    <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=35 maxlength=20 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="cb_td"><button type="submit" class="submit_btn">CANCLE</button><button type="submit" class="submit_btn">SUBMIT</button></td>
+                    <td colspan=3 class="cb_td"><button type="cancle" class="cancle_btn" disabled >CANCLE</button><button type="submit" class="submit_btn">SUBMIT</button></td>
                 </tr>
                 <tr>
                     <td colspan=3 class="companyInfo_img_td"> <img src="/static/images/logo/mpn_logo.png" class="companyInfo_img" /></td>

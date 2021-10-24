@@ -12,8 +12,49 @@
 
 <style>
     .hidden_table {
-        border: 2px solid #099999;
+        margin-top:200px;
+        margin-left:auto;
+        margin-right:auto;
+        border: 2px solid #ebebeb;
+        padding:20px;
     }
+    .id_td{
+        color: #888888;
+    }
+    .input{
+        height: 50px;
+    }
+    .pw_td{
+        color: #888888;
+    }
+    .capt_img{
+        width:35px;
+    }
+    .option_img_td{
+        text-align:right;
+    }
+    .option_logo{
+        width:35px;
+    }
+    .cb_td{
+        color:hsl(0, 0%, 53%);
+        height:50px;
+    }
+    .remember_cb{
+        zoom:1.5;
+    }
+    .submit_td{
+        text-align:right;
+    }
+    .submit_btn{
+        padding:10px;
+        width:70px;
+        border:1px solid #488494;
+        border-radius:5px;
+        color:#dff4f5;
+        background:#369fc5;
+    }
+
 </style>
 
 <body>
@@ -26,13 +67,13 @@
                     <td colspan=2 class="id_td">Username</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="id_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="id_input_td"><input type="text" class="input" name="captcha" disabled size=40 maxlength=30 placeholder=" Omyo Cho" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
                 </tr>
                 <tr>
                     <td colspan=2 class="pw_td">Password</td>
                 </tr>
                 <tr>
-                    <td colspan=2 class="pw_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
+                    <td colspan=2 class="pw_input_td"><input type="text" class="input" name="captcha" disabled size=40 maxlength=30 placeholder=" *********" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
 
                 </tr>
                 <tr>
@@ -45,7 +86,7 @@
                     <td colspan=2 class="response_input_td"><input type="text" class="input" name="captcha" size=40 maxlength=30 placeholder=" Type the text" onfocus="this.placeholder=''" onblur="this.placeholder='Type the text'"></td>
                 </tr>
                 <tr>
-                    <td class="cb_td"><input class="remember_cb" type="checkbox" name="selected" /></td>
+                    <td class="cb_td"><input class="remember_cb" type="checkbox" name="selected" />Remember Me</td>
                     <td class="submit_td"><button type="submit" class="submit_btn">SUBMIT</button></td>
                 </tr>
 

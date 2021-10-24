@@ -11,7 +11,143 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>I'm not a robot</title>
 </head>
+<style>
+    img {
+      display: block;
+      margin: 0px auto;
+    }
 
+    table {
+      width: 100%;
+      margin: 0px auto;
+    }
+
+    button {
+      width: 100%;
+      margin: 0px auto;
+    }
+
+    #img_table td {
+      border: none;
+
+        {
+        % comment %
+      }
+
+      border: 20px solid #ffffec;
+
+        {
+        % endcomment %
+      }
+    }
+
+    .gif_image {
+      width: 60%;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    .checkbox-table {
+      border: 2px solid rgb(8, 8, 8);
+      width: 40%;
+      height: 100%;
+      margin: 150px auto;
+      margin-bottom: 70px;
+    }
+
+    input[type="checkbox"] {
+      width: 45px;
+      height: 45px;
+      vertical-align: middle;
+    }
+
+    .form-check-label {
+      text-align: center;
+      vertical-align: top;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .capt_logo {
+      width: 90px;
+      height: 90px
+    }
+
+    @media only screen and (max-width: 480px) {
+
+      /* For mobile phones: */
+      [class*="container"] {
+        margin: 0px;
+        padding-top: 0px;
+      }
+
+      [class*="checkbox-table"] {
+        width: 80%;
+        margin: 100px auto;
+        margin-bottom: 40px;
+      }
+
+      [class*="gif_image"] {
+        width: 100%;
+      }
+
+      input[type="checkbox"] {
+        width: 30px;
+        vertical-align: middle;
+      }
+
+      [class*="form-check-label"] {
+        text-align: center;
+        vertical-align: top;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      [class*="capt_logo"] {
+        width: 50px;
+        height: 50px
+      }
+    }
+
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+      /* ipad-vertical */
+      [class*="container"] {
+        margin: 0px;
+        margin-top: 600px;
+        padding-top: 0px;
+      }
+
+      [class*="checkbox-table"] {
+        width: 80%;
+        margin: 100px auto;
+        margin-bottom: 40px;
+      }
+
+      [class*="gif_image"] {
+        width: 100%;
+      }
+
+      input[type="checkbox"] {
+        width: 30px;
+        vertical-align: middle;
+      }
+
+      [class*="form-check-label"] {
+        text-align: center;
+        vertical-align: top;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      [class*="capt_logo"] {
+        width: 50px;
+        height: 50px
+      }
+    }
+  </style>
 <body>
     <div class="container">
         <form action="{% url 'captcha' %}" method='post'> {% csrf_token %}
