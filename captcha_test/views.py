@@ -299,7 +299,7 @@ def submit(request):
             ).save()
 
             if str_word == response:
-                time.sleep(3)
+                time.sleep(2)
                 return render(request, "intro.html", {"right_str": right_str, })
             else:
                 if error_count < 2:
@@ -307,13 +307,13 @@ def submit(request):
 
                     capt = random.choice(capt_list)
                     filepath = text_captcha(capt, str_word)
-                    time.sleep(3)
+                    time.sleep(2)
                     return render(
                         request, capt_page, {
                             "str_word": str_word,  "capt": filepath, "logo": logo, "wrong_str": wrong_str}
                     )
                 else:
-                    time.sleep(3)
+                    time.sleep(2)
                     error_count = 0
                     return render(request, "intro.html", {"wrong_str": wrong_str})
 
