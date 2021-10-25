@@ -13,157 +13,284 @@
     <link rel="stylesheet" href="/static/css/Keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <script language="JavaScript">
+    <script language="JavaScript">
+        function nextWin()
 
-  function nextWin()
-
-  {location = "/"}
-
-  </script>
+        {
+            location = "/"
+        }
+    </script>
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        margin-left:auto;
-        margin-right:auto;
-        margin-top:100px;
-
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
         border: 2px solid #adadad;
-        width:700px;
+        width: 700px;
         border-spacing: 0;
     }
-    .title_td{
-        width:500px;
-        padding:10px;
-        font-size:24px;
-        font-weight:bold; 
-        background:#eeeeee;
-        border-bottom:2px solid #adadad;
+    
+    .title_td {
+        width: 500px;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        background: #eeeeee;
+        border-bottom: 2px solid #adadad;
         border-spacing: 0;
-
     }
-    .help_td{
-        padding:10px;
-        font-size:20px;
-        text-align:right;
+    
+    .help_td {
+        padding: 10px;
+        font-size: 20px;
+        text-align: right;
         color: #a3a3a3;
-        background:#eeeeee;
+        background: #eeeeee;
         border-spacing: 0;
-        border-bottom:2px solid #adadad;
+        border-bottom: 2px solid #adadad;
     }
-    .info_td{
-        padding:13px;
-        font-size:18px;
-        font-weight:bold;
+    
+    .info_td {
+        padding: 13px;
+        font-size: 18px;
+        font-weight: bold;
     }
+    
     .email_td {
-        width:200px;
-        padding:10px;
+        width: 200px;
+        padding: 10px;
         text-align: right;
-        font-size:24px;
-        font-weight:bold;
+        font-size: 24px;
+        font-weight: bold;
     }
-    .email_input_td{
-        padding:10px;
+    
+    .email_input_td {
+        padding: 10px;
     }
-    .email_input{
-        padding:5px;
-        font-size:22px;
-        width:100%;
+    
+    .email_input {
+        padding: 5px;
+        font-size: 22px;
+        width: 100%;
     }
+    
     .capt_td {
-        padding:10px;
+        padding: 10px;
         text-align: right;
-        font-size:24px;
-        font-weight:bold;
+        font-size: 24px;
+        font-weight: bold;
     }
-    .option_img_td{
-        text-align:right;
+    
+    .option_img_td {
+        text-align: right;
     }
-    .option_logo{
-        padding:10px;
-        width:50px;
+    
+    .option_logo {
+        padding: 10px;
+        width: 50px;
     }
+    
     .response_td {
-        padding:10px;
+        padding: 10px;
         text-align: right;
-        font-size:24px;
-        font-weight:bold;
+        font-size: 24px;
+        font-weight: bold;
     }
-    .info2_td{
-        font-size:18px;
-        color:#a3a3a3;
+    
+    .info2_td {
+        font-size: 18px;
+        color: #a3a3a3;
     }
-    .response_input_td{
-        padding:10px;
+    
+    .response_input_td {
+        padding: 10px;
     }
-    .use-keyboard-input{
-        width:100%;
-        padding:5px;
-        font-size:22px;
+    
+    .use-keyboard-input {
+        width: 100%;
+        padding: 5px;
+        font-size: 22px;
+        margin-top: 5px;
+        border: 2px solid #f3bf7b;
+        width: 50%;
+        height: 50px;
+        font-size: 28px;
     }
-    .cb_td{
+    
+    .cb_td {
         padding: 10px;
         text-align: right;
     }
-    button{
-        font-weight:bold;
-        width:100px;
-        font-size:20px;
-        padding:5px;
-        margin:10px;
+    
+    button {
+        font-weight: bold;
+        width: 100px;
+        font-size: 20px;
+        padding: 5px;
+        margin: 10px;
     }
-    .companyInfo_img_td{
-        margin:0px;
-        border-top:2px solid #c1c1c1;
+    
+    .companyInfo_img_td {
+        margin: 0px;
+        border-top: 2px solid #c1c1c1;
     }
-    .companyInfo_img{
-       width:100%;
-}
-
+    
+    .companyInfo_img {
+        width: 100%;
+    }
+    
+    @media only screen and (max-device-width: 480px) {
+        /* For mobile phones: */
+        .hidden_table {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            border: 2px solid #adadad;
+            width: 95%;
+            table-layout: fixed;
+            border-spacing: 0;
+        }
+        .title_td {
+            width: 95%;
+            padding: 10px;
+            padding-right: 0px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #eeeeee;
+            border-bottom: 2px solid #adadad;
+            border-spacing: 0;
+        }
+        .help_td {
+            font-size: 0px;
+        }
+        .info_td {
+            padding: 10px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .email_td {
+            width: 80px;
+            padding: 5px;
+            text-align: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .email_input_td {
+            padding: 5px;
+        }
+        .email_input {
+            padding: 5px;
+            font-size: 15px;
+            width: 90%;
+        }
+        .capt_td {
+            width: 80px;
+            padding: 5px;
+            text-align: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .capt_img_td {
+            width: 100%;
+            height: 100px;
+        }
+        .capt_img {
+            width: 100%;
+            height: 100px;
+        }
+        .option_img_td {
+            text-align: right;
+        }
+        .option_logo {
+            padding: 5px;
+            width: 0%;
+        }
+        .info2_td {
+            font-size: 12px;
+            color: #a3a3a3;
+        }
+        .response_td {
+            width: 80px;
+            padding: 5px;
+            text-align: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .response_input_td {
+            padding: 5px;
+        }
+        .use-keyboard-input {
+            width: 90%;
+            padding: 5px;
+            font-size: 20px;
+            margin-top: 5px;
+            border: 2px solid #f3bf7b;
+            height: 30px;
+        }
+        .cb_td {
+            padding: 5px;
+            text-align: right;
+        }
+        button {
+            font-weight: bold;
+            width: 70px;
+            font-size: 13px;
+            padding: 5px;
+            margin: 5px;
+        }
+        .companyInfo_img_td {
+            margin: 0px;
+            border-top: 2px solid #c1c1c1;
+        }
+        .companyInfo_img {
+            width: 100%;
+        }
+    }
 </style>
 
-<body onLoad="setTimeout('nextWin()', 30000)">
+<body onLoad="setTimeout('nextWin()', 60000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
         <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
             <table class="hidden_table">
                 <tr>
-                    <td colspan=2 class="title_td">Match the Characters in the Picture</td>
+                    <td colspan=3 class="title_td">Match the Characters in the Picture</td>
                     <td class="help_td">Help</td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="info_td">To start resetting your password, type your e-mail address and the characters shown in the picture below.</td>
+                    <td colspan=4 class="info_td">To start resetting your password, type your e-mail address and the characters shown in the picture below.</td>
                 </tr>
                 <tr>
                     <td class="email_td">E-mail address:</td>
-                    <td colspan=2 class="email_input_td"><input type="text" class="email_input" name="captcha" disabled size=35 maxlength=20 placeholder=" abcde@naver.com" onfocus="this.placeholder=''" onblur="this.placeholder='abcde.naver.com'"></td>
+                    <td colspan=3 class="email_input_td"><input type="text" class="email_input" name="captcha" disabled size=35 maxlength=20 placeholder=" imnotarobot.live" onfocus="this.placeholder=''" onblur="this.placeholder='imnotarobot.live'"></td>
 
                 </tr>
                 <tr>
                     <td class="capt_td">Picture: </td>
-                    <td class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
+                    <td colspan=2 class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
                     <td class="option_img_td"> <img src="/static/images/logo/option_logo3.png" class="option_logo" /></td>
 
                 </tr>
                 <tr>
                     <td></td>
-                    <td colspan=2 class="info2_td">The picture contains {{capt_len}} characters</td>
+                    <td colspan=3 class="info2_td">The picture contains {{capt_len}} characters</td>
                 </tr>
                 <tr>
                     <td class="response_td">Characters:</td>
-                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" id="response" style="margin-top:5px; border:2px solid #f3bf7b; width:50%; height:50px; font-size:28px;" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
+                    <td colspan=3 class="response_input_td"><textarea class="use-keyboard-input" id="response" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="cb_td"><button type="cancle" class="cancle_btn" disabled >CANCLE</button><button type="submit" class="submit_btn" id="response">SUBMIT</button></td>
+                    <td colspan=4 class="cb_td"><button type="cancle" class="cancle_btn" disabled>CANCLE</button><button type="submit" class="submit_btn" id="submit_btn">SUBMIT</button></td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="companyInfo_img_td"> <img src="/static/images/logo/mpn_logo.png" class="companyInfo_img" /></td>
+                    <td colspan=4 class="companyInfo_img_td"> <img src="/static/images/logo/mpn_logo.png" class="companyInfo_img" /></td>
                 </tr>
 
             </table>
@@ -181,36 +308,35 @@
         ctx.fillText("{{capt}}", canvas.width / 2, canvas.height / 2);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script>
-      const btn = document.getElementById("submit_btn");
-      var response = document.getElementById("response");
-      var answer = "{{str_word}}"
-      var right_str = "{{right_str}}"
-      var wrong_str = "{{wrong_str}}"
+        const btn = document.getElementById("submit_btn");
+        var response = document.getElementById("response");
+        var answer = "{{str_word}}"
+        var right_str = "{{right_str}}"
+        var wrong_str = "{{wrong_str}}"
 
-      btn.addEventListener('click', function(){
-        if(response.value == answer){
-          Swal.fire({
-            icon: 'success',
-            title: 'Right',
-            text: right_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }else {
-          Swal.fire({
-            icon: "warning",
-            title: 'Wrong',
-            text: wrong_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }
+        btn.addEventListener('click', function() {
+            if (response.value == answer) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Right',
+                    text: right_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            } else {
+                Swal.fire({
+                    icon: "warning",
+                    title: 'Deleted',
+                    text: wrong_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            }
 
-      });
-
+        });
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->

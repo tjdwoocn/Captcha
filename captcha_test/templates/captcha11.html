@@ -14,135 +14,237 @@
     <link rel="stylesheet" href="/static/css/Keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <script language="JavaScript">
+    <script language="JavaScript">
+        function nextWin()
 
-  function nextWin()
-
-  {location = "/"}
-
-  </script>
+        {
+            location = "/"
+        }
+    </script>
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        margin-top:100px;
-        margin-left:auto;
-        margin-right:auto;
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
         border: 2px solid #099999;
         background: #d5eef5;
+        border-spacing: 0;
     }
-    .title_tr{
-        background:#82cae0;
-
+    
+    .title_tr {
+        background: #82cae0;
     }
-    .title_td{
-        padding:20px;
-        font-size:30px;
+    
+    .title_td {
+        padding: 20px;
+        font-size: 30px;
         font-weight: bold;
+        border-spacing: 0;
     }
-    .help_td{
-        padding:20px;
-        text-align:right;
-        font-size:25px;
-        color:#309bb7;
-
+    
+    .help_td {
+        padding: 20px;
+        text-align: right;
+        font-size: 25px;
+        color: #309bb7;
+        border-spacing: 0;
     }
-    .info_td{
-        font-size:25px;
-        padding:20px;
+    
+    .info_td {
+        font-size: 25px;
+        padding: 20px;
     }
-    .capt_img_td{
+    
+    .capt_img_td {
+        text-align: right;
+        padding-left: 20px;
+    }
+    
+    .capt_img {
+        width: 800px;
+        height: 200px;
+    }
+    
+    .option_img_td {
+        padding: 20px;
         text-align: right;
     }
-    .capt_img{
-        width:600px;
-        height:200px;
+    
+    .option_logo {
+        width: 70px;
     }
-    .option_img_td{
-        padding:20px;
-        text-align:right;
+    
+    .capt_len_td {
+        font-size: 20px;
+        padding-left: 20px;
     }
-    .option_logo{
-        width:70px;
-    }
-    .capt_len_td{
-        font-size:20px;
-    }
-    .char_td{
-        padding:20px;
-        text-align: right;
-        font-size:25px;
+    
+    .char_td {
+        padding-left: 20px;
+        text-align: left;
+        font-size: 25px;
         font-weight: bold;
     }
-    .response_input_td{
-        padding:20px;
+    
+    .response_input_td {
+        padding-left: 20px;
     }
-    .capt_img_td{
-        padding:20px;
-    }
-    .use-keyboard-input{
-        height:50px;
-        padding:20px;
-        width:100%;
-        padding:5px;
-        font-size:22px;
+    
+    .use-keyboard-input {
+        height: 50px;
+        padding: 20px;
+        width: 100%;
+        padding: 5px;
+        font-size: 22px;
         border-radius: 5px;
     }
-
-    .cb_td{
-        margin-top:0px;
-        padding-top:0px;
-        padding:20px;
-        text-align:right;
+    
+    .cb_td {
+        margin-top: 0px;
+        padding-top: 0px;
+        padding: 20px;
+        text-align: right;
     }
-    .submit_btn{
+    
+    .submit_btn {
         border-radius: 5px;
-
-        margin-top:0px;
-        padding-top:0px;
+        margin-top: 0px;
+        padding-top: 0px;
         border: 2px solid #748585;
-        background:#d5eef5;
-        font-size:25px;
+        background: #d5eef5;
+        font-size: 25px;
         font-weight: bold;
-        width:140px;
+        width: 140px;
+    }
+    
+    @media only screen and (max-device-width: 480px) {
+        /* For mobile phones: */
+        .hidden_table {
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #099999;
+            background: #d5eef5;
+            width: 90%;
+            border-spacing: 0;
+            table-layout: fixed;
+        }
+        .title_tr {
+            background: #82cae0;
+        }
+        .title_td {
+            padding: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #82cae0;
+            border-spacing: 0;
+        }
+        .help_td {
+            padding: 5px;
+            text-align: right;
+            font-size: 14px;
+            background: #82cae0;
+            color: #309bb7;
+            border-spacing: 0;
+        }
+        .info_td {
+            font-size: 14px;
+            padding: 5px;
+        }
+        .capt_img_td {
+            padding: 5px;
+            text-align: center;
+        }
+        .capt_img {
+            width: 250px;
+            height: 120px;
+        }
+        .option_img_td {
+            padding: 5px;
+            text-align: right;
+        }
+        .option_logo {
+            width: 40px;
+        }
+        .capt_len_td {
+            font-size: 13px;
+            padding-left: 10px;
+        }
+        .char_td {
+            padding: 0px;
+            padding-left: 10px;
+            width: 20px;
+            text-align: right;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .response_input_td {
+            padding: 10px;
+        }
+        .use-keyboard-input {
+            height: 40px;
+            padding: 10px;
+            width: 90%;
+            padding: 5px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .cb_td {
+            margin-top: 0px;
+            padding-top: 0px;
+            padding: 10px;
+            padding-top: 0px;
+            text-align: right;
+        }
+        .submit_btn {
+            border-radius: 5px;
+            margin-top: 0px;
+            padding-top: 0px;
+            border: 2px solid #748585;
+            background: #d5eef5;
+            font-size: 15px;
+            font-weight: bold;
+            width: 100px;
+        }
     }
 </style>
 
 
-<body onLoad="setTimeout('nextWin()', 30000)">
+<body onLoad="setTimeout('nextWin()', 60000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
         <form action="{% url 'submit' %}" method='post'> {% csrf_token %} <br>
             <table class="hidden_table">
                 <tr class='title_tr'>
-                    <td colspan=2 class="title_td">Match the Characters in the Picture</td>
+                    <td colspan=3 class="title_td">Match the Characters in the Picture</td>
                     <td class="help_td">Help</td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="info_td">To continue, type the characters you see in the picture.</td>
+                    <td colspan=4 class="info_td">To continue, type the characters you see in the picture.</td>
                 </tr>
 
                 <tr>
-                    <td colspan=2 class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
+                    <td colspan=3 class="capt_img_td"><img src="{{capt}}" class="capt_img" /></td>
                     <td class="option_img_td"> <img src="/static/images/logo/option_logo4.png" class="option_logo" /></td>
 
                 </tr>
                 <tr>
-                    <td></td>
-                    <td class="capt_len_td">The picture contains {{capt_len}} characters.</td>
+                    <td colspan=3 class="capt_len_td">The picture contains {{capt_len}} characters.</td>
                     <td></td>
 
                 </tr>
                 <tr>
                     <td class="char_td">Characters:</td>
-                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" id="response" style="margin-top:5px; border:2px solid #3a484b; " name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea></td>
+                    <td colspan=3 class="response_input_td"><textarea class="use-keyboard-input" id="response" style="margin-top:5px; border:2px solid #3a484b; " name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea></td>
                 </tr>
                 <tr>
-                    <td colspan=3 class="cb_td"><button type="submit" class="submit_btn" id="submit_btn">SUBMIT</button></td>
+                    <td colspan=4 class="cb_td"><button type="submit" class="submit_btn" id="submit_btn">SUBMIT</button></td>
                 </tr>
 
             </table>
@@ -161,36 +263,35 @@
         ctx.fillText("{{capt}}", canvas.width / 2, canvas.height / 2);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script>
-      const btn = document.getElementById("submit_btn");
-      var response = document.getElementById("response");
-      var answer = "{{str_word}}"
-      var right_str = "{{right_str}}"
-      var wrong_str = "{{wrong_str}}"
+        const btn = document.getElementById("submit_btn");
+        var response = document.getElementById("response");
+        var answer = "{{str_word}}"
+        var right_str = "{{right_str}}"
+        var wrong_str = "{{wrong_str}}"
 
-      btn.addEventListener('click', function(){
-        if(response.value == answer){
-          Swal.fire({
-            icon: 'success',
-            title: 'Right',
-            text: right_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }else {
-          Swal.fire({
-            icon: "warning",
-            title: 'Wrong',
-            text: wrong_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }
+        btn.addEventListener('click', function() {
+            if (response.value == answer) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Right',
+                    text: right_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            } else {
+                Swal.fire({
+                    icon: "warning",
+                    title: 'Deleted',
+                    text: wrong_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            }
 
-      });
-
+        });
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->

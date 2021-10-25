@@ -13,69 +13,138 @@
     <link rel="stylesheet" href="/static/css/Keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <script language="JavaScript">
+    <script language="JavaScript">
+        function nextWin()
 
-  function nextWin()
-
-  {location = "/"}
-
-  </script>
+        {
+            location = "/"
+        }
+    </script>
 
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        margin-top:100px;
-        margin-left:auto;
-        margin-right:auto;
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
         border: 2px solid #ebebeb;
-        padding:20px;
-	background:#dff5e7;
+        padding: 20px;
+        background: #dff5e7;
     }
-    .id_td{
+    
+    .id_td {
         color: #888888;
     }
-    .use-keyboard-input{
+    
+    .use-keyboard-input {
+        height: 50px;
+        margin-top: 5px;
+        border: 2px solid #f3bf7b;
+        width: 50%;
+        font-size: 28px;
+    }
+    
+    .pw_td {
+        color: #888888;
+    }
+    
+    .capt_img {
+        width: 400px;
+        height: 100px;
+    }
+    
+    .option_img_td {
+        text-align: right;
+    }
+    
+    .option_logo {
+        width: 35px;
+    }
+    
+    .cb_td {
+        color: hsl(0, 0%, 53%);
         height: 50px;
     }
-    .pw_td{
-        color: #888888;
+    
+    .remember_cb {
+        zoom: 1.5;
     }
-    .capt_img{
-        width:400px;
-        height:100px;
+    
+    .submit_td {
+        text-align: right;
     }
-    .option_img_td{
-        text-align:right;
+    
+    .submit_btn {
+        padding: 10px;
+        width: 70px;
+        border: 1px solid #488494;
+        border-radius: 5px;
+        color: #dff4f5;
+        background: #369fc5;
     }
-    .option_logo{
-        width:35px;
+    
+    @media only screen and (max-device-width: 480px) {
+        /* For mobile phones: */
+        .hidden_table {
+            margin-top: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #ebebeb;
+            padding: 10px;
+            background: #dff5e7;
+        }
+        .id_td {
+            color: #888888;
+        }
+        .use-keyboard-input {
+            height: 40px;
+            margin-top: 5px;
+            border: 2px solid #f3bf7b;
+            width: 240px;
+            font-size: 24px;
+        }
+        .pw_td {
+            color: #888888;
+        }
+        .capt_img {
+            padding-top: 5px;
+            width: 240px;
+            height: 80px;
+        }
+        .option_img_td {
+            text-align: right;
+            padding: 0px;
+        }
+        .option_logo {
+            width: 35px;
+            padding: 0px;
+        }
+        .cb_td {
+            color: hsl(0, 0%, 53%);
+            height: 30px;
+        }
+        .remember_cb {
+            zoom: 1.5;
+        }
+        .submit_td {
+            text-align: right;
+        }
+        .submit_btn {
+            padding: 5px;
+            width: 60px;
+            border: 1px solid #488494;
+            border-radius: 5px;
+            color: #dff4f5;
+            background: #369fc5;
+        }
     }
-    .cb_td{
-        color:hsl(0, 0%, 53%);
-        height:50px;
-    }
-    .remember_cb{
-        zoom:1.5;
-    }
-    .submit_td{
-        text-align:right;
-    }
-    .submit_btn{
-        padding:10px;
-        width:70px;
-        border:1px solid #488494;
-        border-radius:5px;
-        color:#dff4f5;
-        background:#369fc5;
-    }
-
 </style>
 
-<body onLoad="setTimeout('nextWin()', 30000)">
+<body onLoad="setTimeout('nextWin()', 60000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -101,7 +170,7 @@
 
                 </tr>
                 <tr>
-                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" id="response" style="margin-top:5px; border:2px solid #f3bf7b; width:50%; height:50px; font-size:28px;" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
+                    <td colspan=2 class="response_input_td"><textarea class="use-keyboard-input" id="response" name="captcha" size=100 maxlength=40 placeholder=" Type characters" onfocus="this.placeholder=''" onblur="this.placeholder='Type characters'"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -124,36 +193,35 @@
         ctx.fillText("{{capt}}", canvas.width / 2, canvas.height / 2);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script>
-      const btn = document.getElementById("submit_btn");
-      var response = document.getElementById("response");
-      var answer = "{{str_word}}"
-      var right_str = "{{right_str}}"
-      var wrong_str = "{{wrong_str}}"
+        const btn = document.getElementById("submit_btn");
+        var response = document.getElementById("response");
+        var answer = "{{str_word}}"
+        var right_str = "{{right_str}}"
+        var wrong_str = "{{wrong_str}}"
 
-      btn.addEventListener('click', function(){
-        if(response.value == answer){
-          Swal.fire({
-            icon: 'success',
-            title: 'Right',
-            text: right_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }else {
-          Swal.fire({
-            icon: "warning",
-            title: 'Wrong',
-            text: wrong_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }
+        btn.addEventListener('click', function() {
+            if (response.value == answer) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Right',
+                    text: right_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            } else {
+                Swal.fire({
+                    icon: "warning",
+                    title: 'Deleted',
+                    text: wrong_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            }
 
-      });
-
+        });
     </script>
 
 

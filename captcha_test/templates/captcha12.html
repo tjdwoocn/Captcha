@@ -13,108 +13,200 @@
     <link rel="stylesheet" href="/static/css/Keyboard.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <script language="JavaScript">
+    <script language="JavaScript">
+        function nextWin()
 
-  function nextWin()
-
-  {location = "/"}
-
-  </script>
+        {
+            location = "/"
+        }
+    </script>
     <title>CAPTCHA</title>
 </head>
 
 <style>
     .hidden_table {
-        margin-top:100px;
-        margin-left:auto;
-        margin-right:auto;
-        width:700px;
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
         border: 2px solid #dfdfdf;
         background: #ffffff;
+        border-spacing: 0px;
     }
-    .capt_img_td{
-        padding:20px;
+    
+    .capt_img_td {
+        padding: 20px;
     }
-    .capt_img{
-        width:600px;
-        height:200px;
+    
+    .capt_img {
+        width: 600px;
+        height: 200px;
     }
+    
     .info_td {
-
-        color:#ffffff;
-        padding-left:20px;
-        padding-top:10px;
-        padding-bottom:10px;
-        font-size:30px;
+        color: #ffffff;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 30px;
         font-weight: bold;
         background: #6c85b5;
     }
-    .info2_td{
-        padding-top:0px;
-        padding-left:20px;
-        font-size:17px;
-        color:#afadad;
+    
+    .info2_td {
+        padding-top: 0px;
+        padding-left: 20px;
+        font-size: 17px;
+        color: #afadad;
     }
-    .info3_td{
-        padding-left:20px;
-        padding-right:20px;
-        font-size:23px;
+    
+    .info3_td {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 23px;
     }
-    .use-keyboard-input{
-        height:50px;
-        padding-left:20px;
-        padding-right:20px;
-        padding-bottom:0px;
-        width:100%;
-        padding:5px;
-        font-size:22px;
-        border-radius: 5px;    
+    
+    .use-keyboard-input {
+        height: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+        width: 100%;
+        padding: 5px;
+        font-size: 22px;
+        border-radius: 5px;
     }
-    .info4_td{
-        padding-top:0px;
-        padding-left:20px;
-        font-size:20px;
-        color:#7ea6d7;
-
+    
+    .info4_td {
+        padding-top: 0px;
+        padding-left: 20px;
+        font-size: 20px;
+        color: #7ea6d7;
     }
-    .info5_td{
-        padding-top:10px;
-        padding-bottom:10px;
-        padding-left:20px;
-        font-size:20px;
-
+    
+    .info5_td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        font-size: 20px;
     }
-    .cb_td{
-        border:2px solid #e6e6e6;
-        background:#f2f2f1;
-        padding-top:10px;
+    
+    .cb_td {
+        border: 2px solid #e6e6e6;
+        background: #f2f2f1;
+        padding-top: 10px;
         text-align: right;
     }
-    .submit_btn{
-        width:100px;
-        height:32px;
+    
+    .submit_btn {
+        width: 100px;
+        height: 32px;
         font-size: 20px;
-        padding:5px;
-        background:#617aaf;
-        color:#ffffff;
-        font-weight:bold;
-
+        padding: 5px;
+        background: #617aaf;
+        color: #ffffff;
+        font-weight: bold;
     }
-    .cancle_btn{
-        width:100px;
-        height:32px;
+    
+    .cancle_btn {
+        width: 100px;
+        height: 32px;
         font-size: 20px;
-        padding:5px;
-        background:#f1f1f0;
-        color:#787073;
-        font-weight:bold;
+        padding: 5px;
+        background: #f1f1f0;
+        color: #787073;
+        font-weight: bold;
     }
-
+    
+    @media only screen and (max-device-width: 480px) {
+        /* For mobile phones: */
+        .hidden_table {
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+            border: 2px solid #dfdfdf;
+            background: #ffffff;
+            border-spacing: 0px;
+            table-layout: fixed;
+        }
+        .capt_img_td {
+            padding: 5px;
+        }
+        .capt_img {
+            width: 100%;
+            height: 100px;
+        }
+        .info_td {
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            background: #6c85b5;
+        }
+        .info2_td {
+            padding-top: 0px;
+            padding-left: 10px;
+            font-size: 13px;
+            color: #afadad;
+        }
+        .info3_td {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 15px;
+        }
+        .use-keyboard-input {
+            height: 35px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 0px;
+            width: 90%;
+            padding: 5px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .info4_td {
+            padding-top: 0px;
+            padding-left: 10px;
+            font-size: 13px;
+            color: #7ea6d7;
+        }
+        .info5_td {
+            padding: 10px;
+            font-size: 13px;
+        }
+        .cb_td {
+            border: 2px solid #e6e6e6;
+            background: #f2f2f1;
+            padding-top: 10px;
+            text-align: right;
+        }
+        .submit_btn {
+            width: 75px;
+            height: 30px;
+            font-size: 14px;
+            padding: 5px;
+            background: #617aaf;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .cancle_btn {
+            width: 75px;
+            height: 30px;
+            font-size: 14px;
+            padding: 5px;
+            background: #f1f1f0;
+            color: #787073;
+            font-weight: bold;
+        }
+    }
 </style>
 
-<body>
+<body onLoad="setTimeout('nextWin()', 60000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -160,36 +252,35 @@
         ctx.fillText("{{capt}}", canvas.width / 2, canvas.height / 2);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script>
-      const btn = document.getElementById("submit_btn");
-      var response = document.getElementById("response");
-      var answer = "{{str_word}}"
-      var right_str = "{{right_str}}"
-      var wrong_str = "{{wrong_str}}"
+        const btn = document.getElementById("submit_btn");
+        var response = document.getElementById("response");
+        var answer = "{{str_word}}"
+        var right_str = "{{right_str}}"
+        var wrong_str = "{{wrong_str}}"
 
-      btn.addEventListener('click', function(){
-        if(response.value == answer){
-          Swal.fire({
-            icon: 'success',
-            title: 'Right',
-            text: right_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }else {
-          Swal.fire({
-            icon: "warning",
-            title: 'Wrong',
-            text: wrong_str,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          });
-        }
+        btn.addEventListener('click', function() {
+            if (response.value == answer) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Right',
+                    text: right_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            } else {
+                Swal.fire({
+                    icon: "warning",
+                    title: 'Deleted',
+                    text: wrong_str,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: '확인',
+                });
+            }
 
-      });
-
+        });
     </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
