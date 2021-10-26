@@ -196,7 +196,7 @@
                 font-weight: bold;
                 width: 20%;
                 height: 20%;
-                font-size: 12px;
+                font-size: 40%;
                 background: #7186bb;
                 border-radius: 5px;
             }
@@ -311,7 +311,7 @@
     </style>
 </head>
 
-<body onLoad="setTimeout('nextWin()', 60000)">
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="main_container"></div>
     <div class="hidden_div">
         <form action="{% url 'submit' %}" method='post'>
@@ -370,7 +370,7 @@
         var wrong_str = "{{wrong_str}}"
 
         btn.addEventListener('click', function() {
-            if (response.value == answer) {
+            if (response.value.toLowerCase() == answer) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Right',

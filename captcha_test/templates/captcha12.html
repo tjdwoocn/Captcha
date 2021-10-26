@@ -206,7 +206,7 @@
     }
 </style>
 
-<body onLoad="setTimeout('nextWin()', 60000)">
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -262,7 +262,7 @@
         var wrong_str = "{{wrong_str}}"
 
         btn.addEventListener('click', function() {
-            if (response.value == answer) {
+            if (response.value.toLowerCase() == answer) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Right',

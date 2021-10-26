@@ -62,7 +62,7 @@
     }
     
     .email_td {
-        width: 200px;
+        width: 180px;
         padding: 10px;
         text-align: right;
         font-size: 24px;
@@ -76,7 +76,7 @@
     .email_input {
         padding: 5px;
         font-size: 22px;
-        width: 100%;
+        width: 90%;
     }
     
     .capt_td {
@@ -84,6 +84,17 @@
         text-align: right;
         font-size: 24px;
         font-weight: bold;
+    }
+    
+    .capt_img_td {
+        padding: 10px;
+        width: 500px;
+        height: 150px;
+    }
+    
+    .capt_img {
+        width: 100%;
+        height: 100%;
     }
     
     .option_img_td {
@@ -103,6 +114,7 @@
     }
     
     .info2_td {
+        padding: 10px;
         font-size: 18px;
         color: #a3a3a3;
     }
@@ -112,14 +124,12 @@
     }
     
     .use-keyboard-input {
-        width: 100%;
         padding: 5px;
-        font-size: 22px;
         margin-top: 5px;
         border: 2px solid #f3bf7b;
-        width: 50%;
-        height: 50px;
-        font-size: 28px;
+        width: 80%;
+        height: 40px;
+        font-size: 25px;
     }
     
     .cb_td {
@@ -253,7 +263,7 @@
     }
 </style>
 
-<body onLoad="setTimeout('nextWin()', 60000)">
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -318,7 +328,7 @@
         var wrong_str = "{{wrong_str}}"
 
         btn.addEventListener('click', function() {
-            if (response.value == answer) {
+            if (response.value.toLowerCase() == answer) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Right',

@@ -22,9 +22,12 @@ from captcha_test.models import TextCaptcha, ImageCaptcha
 # 3D modeling
 from random import uniform, shuffle, randint
 from PIL import ImageFont, Image, ImageDraw
-import numpy
+import numpy as np
 import pylab
 from mpl_toolkits.mplot3d import Axes3D
+
+# cv2
+import cv2
 
 error_count = 0
 word_list = [
@@ -171,6 +174,8 @@ def captcha(request):
         random.choice(str_list), random.choice(str_list2)
     )
     capt_page_list = [
+        "captcha1.html",
+        "captcha2.html",
         "captcha5.html",
         "captcha6.html",
         "captcha7.html",
@@ -216,12 +221,20 @@ def captcha(request):
                 capt_list = [
                     "ICaptcha",
                     "Gimpy",
+                    "BWImage",
+                    "BWLImage",
+                    "BWLSPImage",
+                    "BWLLensImage",
                 ]
             else:
                 if len(str_word) > 6:
                     capt_list = [
                         "ICaptcha",
                         "Gimpy",
+                        "BWImage",
+                        "BWLImage",
+                        "BWLSPImage",
+                        "BWLLensImage",
                         "OnecolorCaptcha",
                         "MulticolorCaptcha",
                         "GraycolorCaptcha",
@@ -232,6 +245,10 @@ def captcha(request):
                     capt_list = [
                         "ICaptcha",
                         "Gimpy",
+                        "BWImage",
+                        "BWLImage",
+                        "BWLSPImage",
+                        "BWLLensImage",
                         "OnecolorCaptcha",
                         "MulticolorCaptcha",
                         "GraycolorCaptcha",
@@ -244,7 +261,36 @@ def captcha(request):
             capt = random.choice(capt_list)
             filepath = text_captcha(capt, str_word)
             logo_list = ["amazon", "naver", "google", "facebook"]
-            if capt_page == "captcha5.html":
+
+            if capt_page == "captcha1.html":
+                logo = "yahoo"
+
+                return render(
+                    request,
+                    "captcha1.html",
+                    {
+                        "str_word": str_word,
+                        "capt": filepath,
+                        "logo": logo,
+                        "right_str": right_str,
+                        "wrong_str": wrong_str,
+                    },
+                )
+            elif capt_page == "captcha2.html":
+                logo = "naver"
+
+                return render(
+                    request,
+                    "captcha2.html",
+                    {
+                        "str_word": str_word,
+                        "capt": filepath,
+                        "logo": logo,
+                        "right_str": right_str,
+                        "wrong_str": wrong_str,
+                    },
+                )
+            elif capt_page == "captcha5.html":
                 logo = "amazon"
 
                 return render(
@@ -258,7 +304,6 @@ def captcha(request):
                         "wrong_str": wrong_str,
                     },
                 )
-
             elif capt_page == "captcha6.html":
                 logo = random.choice(logo_list)
 
@@ -365,13 +410,16 @@ def submit(request):
             return render(request, "intro.html")
 
         else:
-            response = request.POST.get("captcha")
+            response = request.POST.get("captcha").lower()
+            print(str_word, response)
             TextCaptcha(
                 answer=str_word, response=response, create_date=now
             ).save()
 
             if str_word == response:
-                time.sleep(2)
+                print(str_word, response + "123")
+
+                time.sleep(3)
                 return render(
                     request,
                     "intro.html",
@@ -380,28 +428,28 @@ def submit(request):
                     },
                 )
             else:
-                if error_count < 2:
-                    error_count += 1
+                print(str_word, response + "456")
 
-                    capt = random.choice(capt_list)
-                    filepath = text_captcha(capt, str_word)
-                    time.sleep(2)
-                    return render(
-                        request,
-                        capt_page,
-                        {
-                            "str_word": str_word,
-                            "capt": filepath,
-                            "logo": logo,
-                            "wrong_str": wrong_str,
-                        },
-                    )
-                else:
-                    time.sleep(2)
-                    error_count = 0
-                    return render(
-                        request, "intro.html", {"wrong_str": wrong_str}
-                    )
+                # if error_count < 2:
+                #     error_count += 1
+
+                #     capt = random.choice(capt_list)
+                #     filepath = text_captcha(capt, str_word)
+                #     time.sleep(2)
+                #     return render(
+                #         request,
+                #         capt_page,
+                #         {
+                #             "str_word": str_word,
+                #             "capt": filepath,
+                #             "logo": logo,
+                #             "wrong_str": wrong_str,
+                #         },
+                #     )
+                # else:
+                time.sleep(3)
+                # error_count = 0
+                return render(request, "intro.html", {"wrong_str": wrong_str})
 
     else:
         return render(request, "intro.html")
@@ -458,7 +506,6 @@ def makeGimpyImage(text):
             if f_ext == ".ttf":
                 fonts_lists.append(os.path.join(root, file))
 
-    font = ImageFont.truetype(random.choice(fonts_lists), 42)
     draw = ImageDraw.Draw(gimpy)
 
     if len(text_splited) > 1:
@@ -467,6 +514,7 @@ def makeGimpyImage(text):
         for i in range(len(text_splited)):
             width = randint(width1, width2)
             height = randint(0, 140)
+            font = ImageFont.truetype(random.choice(fonts_lists), 28)
             draw.text(
                 (width, height), text_splited[i], (255, 255, 255), font=font
             )
@@ -475,6 +523,7 @@ def makeGimpyImage(text):
     else:
         width = randint(0, 80)
         height = randint(0, 140)
+        font = ImageFont.truetype(random.choice(fonts_lists), 28)
         draw.text((width, height), text_splited[0], (255, 255, 255), font=font)
 
     filepath = "static/images/captcha/{}_{}.png".format(
@@ -501,6 +550,266 @@ def makeGimpyImage(text):
     return filepath
 
 
+def makeBWImage(text):
+    FONTS_PATH = "static/fonts"
+    fonts_lists = []
+    for root, directories, files in os.walk(FONTS_PATH, topdown=True):
+        for file in files:
+            f_name, f_ext = os.path.splitext(file)
+            if f_ext == ".ttf":
+                fonts_lists.append(os.path.join(root, file))
+
+    text = text.lower()
+    text_splited = text.split(" ")
+
+    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    font = ImageFont.truetype(random.choice(fonts_lists), 26)
+    draw = ImageDraw.Draw(image)
+
+    width = randint(0, 80)
+    height = randint(0, 40)
+    text = text.lower()
+    if len(text_splited) > 1:
+        width1 = 0
+        width2 = 70
+        for i in range(len(text_splited)):
+            width = randint(width1, width2)
+            height = randint(0, 180)
+            font = ImageFont.truetype(random.choice(fonts_lists), 48)
+            draw.text((width, height), text_splited[i], (0, 0, 0), font=font)
+            width1 += 150
+            width2 += 130
+    else:
+        width = randint(0, 150)
+        height = randint(0, 180)
+        font = ImageFont.truetype(random.choice(fonts_lists), 48)
+        draw.text((width, height), text_splited[0], (0, 0, 0), font=font)
+
+    filepath = "static/images/captcha/{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
+    )
+
+    image.save(filepath)
+    return filepath
+
+
+def makeBWLImage(text):
+    FONTS_PATH = "static/fonts"
+    fonts_lists = []
+    for root, directories, files in os.walk(FONTS_PATH, topdown=True):
+        for file in files:
+            f_name, f_ext = os.path.splitext(file)
+            if f_ext == ".ttf":
+                fonts_lists.append(os.path.join(root, file))
+
+    text = text.lower()
+    text_splited = text.split(" ")
+
+    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    font = ImageFont.truetype(random.choice(fonts_lists), 26)
+    draw = ImageDraw.Draw(image)
+
+    width = randint(0, 80)
+    height = randint(0, 40)
+    if len(text_splited) > 1:
+        width1 = 0
+        width2 = 70
+        for i in range(len(text_splited)):
+            width = randint(width1, width2)
+            height = randint(0, 180)
+            font = ImageFont.truetype(random.choice(fonts_lists), 48)
+            draw.text((width, height), text_splited[i], (0, 0, 0), font=font)
+            width1 += 150
+            width2 += 130
+    else:
+        width = randint(0, 150)
+        height = randint(0, 180)
+        font = ImageFont.truetype(random.choice(fonts_lists), 48)
+        draw.text((width, height), text_splited[0], (0, 0, 0), font=font)
+
+    filepath = "static/images/captcha/{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
+    )
+    color_lists = [
+        "#E0D7FF",
+        "#FFCCE1",
+        "#D7EEFF",
+        "#FAFFC7",
+        "#ffb3ba",
+        "#ffdfba",
+        "#ffffba",
+        "#baffc9",
+        "#bae1ff",
+    ]
+    line_color = random.choice(color_lists)
+    create_noise_curve(image, line_color)
+    add_rand_line_to_image(image, line_color=line_color)
+
+    image.save(filepath)
+    return filepath
+
+
+def makeBWLSPImage(text):
+    FONTS_PATH = "static/fonts"
+    fonts_lists = []
+    for root, directories, files in os.walk(FONTS_PATH, topdown=True):
+        for file in files:
+            f_name, f_ext = os.path.splitext(file)
+            if f_ext == ".ttf":
+                fonts_lists.append(os.path.join(root, file))
+
+    text = text.lower()
+    text_splited = text.split(" ")
+
+    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    font = ImageFont.truetype(random.choice(fonts_lists), 26)
+    draw = ImageDraw.Draw(image)
+
+    width = randint(0, 80)
+    height = randint(0, 40)
+    text = text.lower()
+    if len(text_splited) > 1:
+        width1 = 0
+        width2 = 70
+        for i in range(len(text_splited)):
+            width = randint(width1, width2)
+            height = randint(0, 180)
+            font = ImageFont.truetype(random.choice(fonts_lists), 48)
+            draw.text((width, height), text_splited[i], (0, 0, 0), font=font)
+            width1 += 150
+            width2 += 130
+    else:
+        width = randint(0, 150)
+        height = randint(0, 180)
+        font = ImageFont.truetype(random.choice(fonts_lists), 48)
+        draw.text((width, height), text_splited[0], (0, 0, 0), font=font)
+
+    filepath = "static/images/captcha/{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
+    )
+    color_lists = [
+        "#bae1ff",
+    ]
+    line_color = random.choice(color_lists)
+    create_noise_curve(image, line_color)
+    add_rand_line_to_image(image, line_color=line_color)
+
+    image.save(filepath)
+    img = cv2.imread(filepath, 0)
+    row, col = img.shape
+
+    # Randomly pick some pixels in the
+    # image for coloring them white
+    # Pick a random number between 300 and 10000
+    number_of_pixels = random.randint(3000, 13000)
+    for i in range(number_of_pixels):
+
+        # Pick a random y coordinate
+        y_coord = random.randint(0, row - 1)
+
+        # Pick a random x coordinate
+        x_coord = random.randint(0, col - 1)
+
+        # Color that pixel to white
+        img[y_coord][x_coord] = 255
+
+    # Randomly pick some pixels in
+    # the image for coloring them black
+    # Pick a random number between 300 and 10000
+    number_of_pixels = random.randint(3000, 13000)
+    for i in range(number_of_pixels):
+
+        # Pick a random y coordinate
+        y_coord = random.randint(0, row - 1)
+
+        # Pick a random x coordinate
+        x_coord = random.randint(0, col - 1)
+
+        # Color that pixel to black
+        img[y_coord][x_coord] = 0
+    cv2.imwrite(filepath, img)
+
+    return filepath
+
+
+def makeBWLLensImage(text):
+    FONTS_PATH = "static/fonts"
+    fonts_lists = []
+    for root, directories, files in os.walk(FONTS_PATH, topdown=True):
+        for file in files:
+            f_name, f_ext = os.path.splitext(file)
+            if f_ext == ".ttf":
+                fonts_lists.append(os.path.join(root, file))
+
+    text = text.lower()
+    text_splited = text.split(" ")
+
+    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    font = ImageFont.truetype(random.choice(fonts_lists), 26)
+    draw = ImageDraw.Draw(image)
+
+    width = randint(0, 80)
+    height = randint(0, 40)
+    text = text.lower()
+    if len(text_splited) > 1:
+        width1 = 0
+        width2 = 70
+        for i in range(len(text_splited)):
+            width = randint(width1, width2)
+            height = randint(0, 180)
+            font = ImageFont.truetype(random.choice(fonts_lists), 48)
+            draw.text((width, height), text_splited[i], (0, 0, 0), font=font)
+            width1 += 150
+            width2 += 130
+    else:
+        width = randint(0, 150)
+        height = randint(0, 180)
+        font = ImageFont.truetype(random.choice(fonts_lists), 48)
+        draw.text((width, height), text_splited[0], (0, 0, 0), font=font)
+
+    filepath = "static/images/captcha/{}_{}.png".format(
+        text, now.strftime("%H_%M_%S")
+    )
+    color_lists = [
+        "#bae1ff",
+    ]
+    line_color = random.choice(color_lists)
+    create_noise_curve(image, line_color)
+    create_noise_curve(image, line_color)
+    add_rand_line_to_image(image, line_color=line_color)
+    add_rand_line_to_image(image, line_width=4, line_color=line_color)
+
+    image.save(filepath)
+    img = cv2.imread(filepath, 0)
+
+    l = randint(20, 25)  # 파장(wave length)
+    amp = randint(5, 8)  # 진폭(amplitude)
+
+    rows, cols = img.shape[:2]
+
+    # 초기 매핑 배열 생성 ---①
+    mapy, mapx = np.indices((rows, cols), dtype=np.float32)
+
+    # sin, cos 함수를 적용한 변형 매핑 연산 ---②
+    sinx = mapx + amp * np.sin(mapy / l)
+    cosy = mapy + amp * np.cos(mapx / l)
+
+    # 영상 매핑 ---③
+
+    img_sinx = cv2.remap(img, sinx, mapy, cv2.INTER_LINEAR)  # x축만 sin 곡선 적용
+    img_cosy = cv2.remap(img, mapx, cosy, cv2.INTER_LINEAR)  # y축만 cos 곡선 적용
+    # x,y 축 모두 sin, cos 곡선 적용 및 외곽 영역 보정
+    img_both = cv2.remap(
+        img, sinx, cosy, cv2.INTER_LINEAR, None, cv2.BORDER_REPLICATE
+    )
+
+    # cv2.imwrite(filepath, img_sinx)
+    # cv2.imwrite(filepath, img_cosy)
+    cv2.imwrite(filepath, img_both)
+
+    return filepath
+
+
 def makeImage(text, width=512, height=200, angle=None):
     angle = angle if angle != None else uniform(-50, 10)
     try:
@@ -519,8 +828,8 @@ def makeImage(text, width=512, height=200, angle=None):
 
     fig = pylab.figure(figsize=(width / 120.0, height / 50.0))
     ax = Axes3D(fig)
-    X, Y = numpy.meshgrid(range(img.size[0]), range(img.size[1]))
-    Z = 1 - numpy.asarray(img) / 255
+    X, Y = np.meshgrid(range(img.size[0]), range(img.size[1]))
+    Z = 1 - np.asarray(img) / 255
     ax.plot_wireframe(X, -Y, Z, rstride=1, cstride=1)
     ax.set_zlim((-3, 3))
     ax.set_xlim((txtW * 1.1, txtW * 1.9))
@@ -553,6 +862,18 @@ def text_captcha(capt, str_word):
 
     elif capt == "Gimpy":
         filepath = makeGimpyImage(str_word)
+
+    elif capt == "BWImage":
+        filepath = makeBWImage(str_word)
+
+    elif capt == "BWLImage":
+        filepath = makeBWLImage(str_word)
+
+    elif capt == "BWLSPImage":
+        filepath = makeBWLSPImage(str_word)
+
+    elif capt == "BWLLensImage":
+        filepath = makeBWLLensImage(str_word)
 
     elif capt == "OnecolorCaptcha":
         # Captcha image size number (2 -> 640x360)
@@ -806,6 +1127,60 @@ def create_noise_curve(image, color):
     start = random.randint(0, 20)
     ImageDraw.Draw(image).arc(points, start, end, fill=color)
     return image
+
+
+def captcha1(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["amazon"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha1.html", {"capt": filepath, "logo": logo})
+
+
+def captcha2(request):
+    now = datetime.now()
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["naver"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha2.html", {"capt": filepath, "logo": logo})
 
 
 def captcha5(request):

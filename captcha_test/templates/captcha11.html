@@ -86,9 +86,10 @@
     
     .char_td {
         padding-left: 20px;
-        text-align: left;
+        text-align: right;
         font-size: 25px;
         font-weight: bold;
+        width: 200px;
     }
     
     .response_input_td {
@@ -98,7 +99,7 @@
     .use-keyboard-input {
         height: 50px;
         padding: 20px;
-        width: 100%;
+        width: 90%;
         padding: 5px;
         font-size: 22px;
         border-radius: 5px;
@@ -176,7 +177,7 @@
             padding-left: 10px;
         }
         .char_td {
-            padding: 0px;
+            padding: 10px;
             padding-left: 10px;
             width: 20px;
             text-align: right;
@@ -187,8 +188,7 @@
             padding: 10px;
         }
         .use-keyboard-input {
-            height: 40px;
-            padding: 10px;
+            height: 30px;
             width: 90%;
             padding: 5px;
             font-size: 18px;
@@ -215,7 +215,7 @@
 </style>
 
 
-<body onLoad="setTimeout('nextWin()', 60000)">
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="main_container">
     </div>
     <div class="hidden_div">
@@ -273,7 +273,7 @@
         var wrong_str = "{{wrong_str}}"
 
         btn.addEventListener('click', function() {
-            if (response.value == answer) {
+            if (response.value.toLowerCase() == answer) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Right',

@@ -298,7 +298,7 @@
     </style>
 </head>
 
-<body onLoad="setTimeout('nextWin()', 60000)">
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="main_container">
         <img src="/static/images/logo/{{logo}}.jpg" class="img_logo" />
     </div>
@@ -348,7 +348,7 @@
         var wrong_str = "{{wrong_str}}"
 
         btn.addEventListener('click', function() {
-            if (response.value == answer) {
+            if (response.value.toLowerCase() == answer) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Right',
