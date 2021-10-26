@@ -221,8 +221,7 @@ def captcha(request):
                 capt_list = [
                     "ICaptcha",
                     "Gimpy",
-                    "BWImage",
-                    "BWLImage",
+                    "BWLDistImage",
                     "BWLSPImage",
                     "BWLLensImage",
                 ]
@@ -231,8 +230,7 @@ def captcha(request):
                     capt_list = [
                         "ICaptcha",
                         "Gimpy",
-                        "BWImage",
-                        "BWLImage",
+                        "BWLDistImage",
                         "BWLSPImage",
                         "BWLLensImage",
                         "OnecolorCaptcha",
@@ -245,8 +243,7 @@ def captcha(request):
                     capt_list = [
                         "ICaptcha",
                         "Gimpy",
-                        "BWImage",
-                        "BWLImage",
+                        "BWLDistImage",
                         "BWLSPImage",
                         "BWLLensImage",
                         "OnecolorCaptcha",
@@ -259,6 +256,7 @@ def captcha(request):
                         "3dCaptcha",
                     ]
             capt = random.choice(capt_list)
+            print(capt)
             filepath = text_captcha(capt, str_word)
             logo_list = ["amazon", "naver", "google", "facebook"]
 
@@ -411,13 +409,11 @@ def submit(request):
 
         else:
             response = request.POST.get("captcha").lower()
-            print(str_word, response)
             TextCaptcha(
                 answer=str_word, response=response, create_date=now
             ).save()
 
             if str_word == response:
-                print(str_word, response + "123")
 
                 time.sleep(3)
                 return render(
@@ -428,7 +424,6 @@ def submit(request):
                     },
                 )
             else:
-                print(str_word, response + "456")
 
                 # if error_count < 2:
                 #     error_count += 1
@@ -514,7 +509,7 @@ def makeGimpyImage(text):
         for i in range(len(text_splited)):
             width = randint(width1, width2)
             height = randint(0, 140)
-            font = ImageFont.truetype(random.choice(fonts_lists), 28)
+            font = ImageFont.truetype(random.choice(fonts_lists), 42)
             draw.text(
                 (width, height), text_splited[i], (255, 255, 255), font=font
             )
@@ -523,7 +518,7 @@ def makeGimpyImage(text):
     else:
         width = randint(0, 80)
         height = randint(0, 140)
-        font = ImageFont.truetype(random.choice(fonts_lists), 28)
+        font = ImageFont.truetype(random.choice(fonts_lists), 42)
         draw.text((width, height), text_splited[0], (255, 255, 255), font=font)
 
     filepath = "static/images/captcha/{}_{}.png".format(
@@ -562,7 +557,7 @@ def makeBWImage(text):
     text = text.lower()
     text_splited = text.split(" ")
 
-    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    image = Image.new("RGBA", (512, 256), (255, 255, 255))
     font = ImageFont.truetype(random.choice(fonts_lists), 26)
     draw = ImageDraw.Draw(image)
 
@@ -593,7 +588,7 @@ def makeBWImage(text):
     return filepath
 
 
-def makeBWLImage(text):
+def makeBWLDistImage(text):
     FONTS_PATH = "static/fonts"
     fonts_lists = []
     for root, directories, files in os.walk(FONTS_PATH, topdown=True):
@@ -605,7 +600,7 @@ def makeBWLImage(text):
     text = text.lower()
     text_splited = text.split(" ")
 
-    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    image = Image.new("RGBA", (512, 256), (255, 255, 255))
     font = ImageFont.truetype(random.choice(fonts_lists), 26)
     draw = ImageDraw.Draw(image)
 
@@ -644,8 +639,46 @@ def makeBWLImage(text):
     line_color = random.choice(color_lists)
     create_noise_curve(image, line_color)
     add_rand_line_to_image(image, line_color=line_color)
+    create_noise_curve(image, line_color)
+    add_rand_line_to_image(image, line_width=4, line_color=line_color)
 
     image.save(filepath)
+    img = cv2.imread(filepath, 0)
+
+    rows, cols = img.shape[:2]
+
+    # ---① 설정 값 셋팅
+    exp = round(
+        random.uniform(0.5, 2), 1
+    )  # 볼록, 오목 지수 (오목 : 0.1 ~ 1, 볼록 : 1.1~)
+    scale = 1  # 변환 영역 크기 (0 ~ 1)
+
+    # 매핑 배열 생성 ---②
+    mapy, mapx = np.indices((rows, cols), dtype=np.float32)
+
+    # 좌상단 기준좌표에서 -1~1로 정규화된 중심점 기준 좌표로 변경 ---③
+    mapx = 2 * mapx / (cols - 1) - 1
+    mapy = 2 * mapy / (rows - 1) - 1
+
+    # 직교좌표를 극 좌표로 변환 ---④
+    r, theta = cv2.cartToPolar(mapx, mapy)
+
+    # 왜곡 영역만 중심확대/축소 지수 적용 ---⑤
+    r[r < scale] = r[r < scale] ** exp
+
+    # 극 좌표를 직교좌표로 변환 ---⑥
+    mapx, mapy = cv2.polarToCart(r, theta)
+
+    # 중심점 기준에서 좌상단 기준으로 변경 ---⑦
+    mapx = ((mapx + 1) * cols - 1) / 2
+    mapy = ((mapy + 1) * rows - 1) / 2
+    # 재매핑 변환
+    distorted = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
+
+    # cv2.imwrite(filepath, img_sinx)
+    # cv2.imwrite(filepath, img_cosy)
+    cv2.imwrite(filepath, distorted)
+
     return filepath
 
 
@@ -661,7 +694,7 @@ def makeBWLSPImage(text):
     text = text.lower()
     text_splited = text.split(" ")
 
-    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    image = Image.new("RGBA", (512, 256), (255, 255, 255))
     font = ImageFont.truetype(random.choice(fonts_lists), 26)
     draw = ImageDraw.Draw(image)
 
@@ -701,7 +734,7 @@ def makeBWLSPImage(text):
     # Randomly pick some pixels in the
     # image for coloring them white
     # Pick a random number between 300 and 10000
-    number_of_pixels = random.randint(3000, 13000)
+    number_of_pixels = random.randint(3000, 10000)
     for i in range(number_of_pixels):
 
         # Pick a random y coordinate
@@ -716,7 +749,7 @@ def makeBWLSPImage(text):
     # Randomly pick some pixels in
     # the image for coloring them black
     # Pick a random number between 300 and 10000
-    number_of_pixels = random.randint(3000, 13000)
+    number_of_pixels = random.randint(3000, 10000)
     for i in range(number_of_pixels):
 
         # Pick a random y coordinate
@@ -744,7 +777,7 @@ def makeBWLLensImage(text):
     text = text.lower()
     text_splited = text.split(" ")
 
-    image = Image.new("RGBA", (256, 128), (255, 255, 255))
+    image = Image.new("RGBA", (512, 256), (255, 255, 255))
     font = ImageFont.truetype(random.choice(fonts_lists), 26)
     draw = ImageDraw.Draw(image)
 
@@ -863,11 +896,8 @@ def text_captcha(capt, str_word):
     elif capt == "Gimpy":
         filepath = makeGimpyImage(str_word)
 
-    elif capt == "BWImage":
-        filepath = makeBWImage(str_word)
-
-    elif capt == "BWLImage":
-        filepath = makeBWLImage(str_word)
+    elif capt == "BWLDistImage":
+        filepath = makeBWLDistImage(str_word)
 
     elif capt == "BWLSPImage":
         filepath = makeBWLSPImage(str_word)
