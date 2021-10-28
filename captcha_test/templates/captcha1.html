@@ -101,39 +101,70 @@
     }
     
     @media only screen and (max-device-width: 480px) {
-        table {
-            border-width: 1px;
-            border-spacing: 0px;
-            border-style: solid;
-            border-color: black;
-            border-collapse: separate;
-            background-color: white;
-        }
-        table th {
-            border-width: 1px;
-            padding: 3px;
-            border-style: solid;
-            border-color: black;
-            background-color: white;
-        }
-        table td {
-            border-width: 1px;
-            padding: 3px;
-            border-style: solid;
-            border-color: black;
-            background-color: white;
-        }
         /* For mobile phones: */
         .hidden_table {
-            margin-top: 30px;
+            margin-top: 20px;
             margin-left: auto;
             margin-right: auto;
             width: 90%;
-            height: 500px;
+            height: 70%;
             border: 2px solid #dfdfdf;
-            background: #ffffff;
+            background: #fafafa;
             border-spacing: 0px;
             table-layout: fixed;
+        }
+        .title_td {
+            height: 25%;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 20px;
+            padding-bottom: 10px;
+        }
+        .option_td {
+            padding: 10px;
+            padding-bottom: 5px;
+            color: gray;
+        }
+        .capt_img_td {
+            width: 90%;
+            height: 150px;
+            text-align: center;
+        }
+        .capt_img {
+            padding: 5px;
+            width: 96%;
+            height: 96%;
+        }
+        .input_td {
+            width: 95%;
+            height: 15%;
+            text-align: center;
+            padding: 5px;
+        }
+        .use-keyboard-input {
+            width: 95%;
+            height: 98%;
+            font-size: 20px;
+            border-radius: 5px solid #c8c6c2;
+        }
+        .use-keyboard-input::placeholder {
+            color: #c8c6c2;
+            padding-top: 10px;
+        }
+        .submit_td {
+            padding: 10px;
+            padding-left: 10px;
+            height: 20%;
+        }
+        .submit_btn {
+            width: 50%;
+            height: 100%;
+            background: #430091;
+            color: #fdeafd;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
         }
     }
 </style>

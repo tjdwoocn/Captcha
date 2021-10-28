@@ -175,7 +175,7 @@ def captcha(request):
     )
     capt_page_list = [
         "captcha1.html",
-        "captcha2.html",
+        "captcha3.html",
         "captcha5.html",
         "captcha6.html",
         "captcha7.html",
@@ -284,6 +284,18 @@ def captcha(request):
                         "str_word": str_word,
                         "capt": filepath,
                         "logo": logo,
+                        "right_str": right_str,
+                        "wrong_str": wrong_str,
+                    },
+                )
+            elif capt_page == "captcha3.html":
+
+                return render(
+                    request,
+                    "captcha3.html",
+                    {
+                        "str_word": str_word,
+                        "capt": filepath,
                         "right_str": right_str,
                         "wrong_str": wrong_str,
                     },
@@ -1160,7 +1172,6 @@ def create_noise_curve(image, color):
 
 
 def captcha1(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["amazon"]
@@ -1170,6 +1181,10 @@ def captcha1(request):
 
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1177,6 +1192,7 @@ def captcha1(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1187,7 +1203,6 @@ def captcha1(request):
 
 
 def captcha2(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["naver"]
@@ -1197,6 +1212,10 @@ def captcha2(request):
 
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1204,6 +1223,7 @@ def captcha2(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1213,8 +1233,69 @@ def captcha2(request):
     return render(request, "captcha2.html", {"capt": filepath, "logo": logo})
 
 
+def captcha3(request):
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["naver"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+        "3dCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha3.html", {"capt": filepath, "logo": logo})
+
+
+def captcha4(request):
+    # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
+    word_list = ["chicken"]
+    logo_list = ["naver"]
+    global str_word
+    str_word = random.choice(word_list)
+    logo = random.choice(logo_list)
+
+    capt_list = [
+        "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
+        "OnecolorCaptcha",
+        "MulticolorCaptcha",
+        "GraycolorCaptcha",
+        "BluredCaptcha",
+        "ContouredCaptcha",
+        "EmbosedCaptcha",
+        "EdgedCaptcha",
+        "3dCaptcha",
+    ]
+    # capt_list = ['ImageCaptcha']
+
+    capt = random.choice(capt_list)
+    filepath = text_captcha(capt, str_word)
+
+    return render(request, "captcha4.html", {"capt": filepath, "logo": logo})
+
+
 def captcha5(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["amazon"]
@@ -1224,6 +1305,10 @@ def captcha5(request):
 
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1231,6 +1316,7 @@ def captcha5(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1241,7 +1327,6 @@ def captcha5(request):
 
 
 def captcha6(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["google"]
@@ -1251,6 +1336,10 @@ def captcha6(request):
 
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1258,6 +1347,7 @@ def captcha6(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1268,7 +1358,6 @@ def captcha6(request):
 
 
 def captcha7(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["facebook"]
@@ -1277,6 +1366,10 @@ def captcha7(request):
     logo = random.choice(logo_list)
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1284,6 +1377,7 @@ def captcha7(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1294,7 +1388,6 @@ def captcha7(request):
 
 
 def captcha9(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["facebook"]
@@ -1303,6 +1396,10 @@ def captcha9(request):
     logo = random.choice(logo_list)
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1310,6 +1407,7 @@ def captcha9(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1320,7 +1418,6 @@ def captcha9(request):
 
 
 def captcha10(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["facebook"]
@@ -1330,6 +1427,10 @@ def captcha10(request):
     logo = random.choice(logo_list)
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1337,6 +1438,7 @@ def captcha10(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1351,7 +1453,6 @@ def captcha10(request):
 
 
 def captcha11(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["facebook"]
@@ -1361,6 +1462,10 @@ def captcha11(request):
     logo = random.choice(logo_list)
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1368,6 +1473,7 @@ def captcha11(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1382,7 +1488,6 @@ def captcha11(request):
 
 
 def captcha12(request):
-    now = datetime.now()
     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
     word_list = ["chicken"]
     logo_list = ["facebook"]
@@ -1391,6 +1496,10 @@ def captcha12(request):
     logo = random.choice(logo_list)
     capt_list = [
         "ICaptcha",
+        "Gimpy",
+        "BWLDistImage",
+        "BWLSPImage",
+        "BWLLensImage",
         "OnecolorCaptcha",
         "MulticolorCaptcha",
         "GraycolorCaptcha",
@@ -1398,6 +1507,7 @@ def captcha12(request):
         "ContouredCaptcha",
         "EmbosedCaptcha",
         "EdgedCaptcha",
+        "3dCaptcha",
     ]
     # capt_list = ['ImageCaptcha']
 
@@ -1408,7 +1518,6 @@ def captcha12(request):
 
 
 def captcha8(request):
-    now = datetime.now()
     logo_list = ["google"]
     logo = random.choice(logo_list)
     folder_lists = os.listdir("./static/images/img_captcha/")
@@ -1424,50 +1533,3 @@ def captcha8(request):
         "captcha8.html",
         {"capt": folder, "logo": logo, "sliced_img_paths": sliced_img_paths},
     )
-
-    # def captcha1(request):
-    #     num = random.randrange(1021, 9899)
-    #     global str_word
-    #     str_word = str(num)
-    #     return render(request, "captcha1.html", {"capt": str_word})
-
-    # def captcha2(request):
-    #     word_list = ["test", "tjdwo", "chicken", "potato", "hamburger"]
-    #     global str_word
-    #     str_word = random.choice(word_list)
-    #     return render(request, "captcha2.html", {"capt": str_word})
-
-    # def captcha3(request):
-    #     word_list = ["test", "tjdwo", "chicken", "potato", "hamburger"]
-    #     global str_word
-    #     str_word = random.choice(word_list)
-    #     return render(request, "captcha3.html", {"capt": str_word})
-
-    # def captcha4(request):
-    #     now = datetime.now()
-    #     # word_list = ['test', 'tjdwo', 'chicken', 'potato', 'hamburger']
-    #     word_list = ["chicken"]
-    #     logo_list = ["naver", "amazon", "google"]
-    #     global str_word
-    #     str_word = random.choice(word_list)
-    #     logo = random.choice(logo_list)
-
-    #     capt_list = [
-    #         "ImageCaptcha",
-    #         "OnecolorCaptcha",
-    #         "MulticolorCaptcha",
-    #         "GraycolorCaptcha",
-    #         "BluredCaptcha",
-    #         "ContouredCaptcha",
-    #         "EmbosedCaptcha",
-    #         "EdgedCaptcha",
-    #     ]
-    #     # capt_list = ['ImageCaptcha']
-
-    #     capt = random.choice(capt_list)
-    #     filepath = text_captcha(capt)
-
-    #     print(capt)
-    #     print(str_word)
-
-    #     return render(request, "captcha4.html", {"capt": filepath, "logo": logo})
