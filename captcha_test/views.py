@@ -176,6 +176,7 @@ def captcha(request):
     capt_page_list = [
         "captcha1.html",
         "captcha3.html",
+        "captcha4.html",
         "captcha5.html",
         "captcha6.html",
         "captcha7.html",
@@ -256,7 +257,6 @@ def captcha(request):
                         "3dCaptcha",
                     ]
             capt = random.choice(capt_list)
-            print(capt)
             filepath = text_captcha(capt, str_word)
             logo_list = ["amazon", "naver", "google", "facebook"]
 
@@ -293,6 +293,19 @@ def captcha(request):
                 return render(
                     request,
                     "captcha3.html",
+                    {
+                        "str_word": str_word,
+                        "capt": filepath,
+                        "right_str": right_str,
+                        "wrong_str": wrong_str,
+                    },
+                )
+
+            elif capt_page == "captcha4.html":
+
+                return render(
+                    request,
+                    "captcha4.html",
                     {
                         "str_word": str_word,
                         "capt": filepath,

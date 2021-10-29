@@ -132,7 +132,7 @@
     </style>
 </head>
 
-<body>
+<body onLoad="setTimeout('nextWin()', 300000)">
     <div class="hidden_di">
         <form action="{% url 'submit' %}" method='post'>
             {% csrf_token %}
