@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../static/css/intro.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>I'm not a robot</title>
-</head>
-<style>
+  </head>
+  <style>
     img {
       display: block;
       margin: 0px auto;
@@ -46,14 +47,14 @@
     }
 
     .container {
-      margin-top: 100px;
+      margin-top: 0px;
     }
 
     .checkbox-table {
-      border: 2px solid rgb(8, 8, 8);
+      border: 1px solid rgb(8, 8, 8);
       width: 40%;
       height: 100%;
-      margin: 150px auto;
+      margin: 80px auto;
       margin-bottom: 70px;
     }
 
@@ -71,8 +72,8 @@
     }
 
     .capt_logo {
-      width: 90px;
-      height: 90px
+      width: 70px;
+      height: 70px;
     }
 
     @media only screen and (max-width: 480px) {
@@ -84,8 +85,8 @@
       }
 
       [class*="checkbox-table"] {
-        width: 80%;
-        margin: 100px auto;
+        width: 70%;
+        margin: 60px auto;
         margin-bottom: 40px;
       }
 
@@ -94,14 +95,14 @@
       }
 
       input[type="checkbox"] {
-        width: 30px;
+        width: 25px;
         vertical-align: middle;
       }
 
       [class*="form-check-label"] {
         text-align: center;
         vertical-align: top;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: bold;
       }
 
@@ -116,13 +117,13 @@
       /* ipad-vertical */
       [class*="container"] {
         margin: 0px;
-        margin-top: 600px;
+        margin-top: 0px;
         padding-top: 0px;
       }
 
       [class*="checkbox-table"] {
-        width: 80%;
-        margin: 100px auto;
+        width: 40%;
+        margin: 80px auto;
         margin-bottom: 40px;
       }
 
@@ -131,42 +132,49 @@
       }
 
       input[type="checkbox"] {
-        width: 30px;
+        width: 25px;
         vertical-align: middle;
       }
 
       [class*="form-check-label"] {
         text-align: center;
         vertical-align: top;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
       }
 
       [class*="capt_logo"] {
         width: 50px;
-        height: 50px
+        height: 50px;
+      }
+      .gif_image{
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
       }
     }
   </style>
-<body>
+
+  <body>
     <div class="container">
-        <form action="{% url 'captcha' %}" method='post'> {% csrf_token %}
-            <table class="checkbox-table">
-                <tr>
-                    <td style="text-align:center;">
-                        <input type="checkbox" name="I'm not a robot" id="cb1" />
-                    </td>
-                    <td>
-                        <label class="form-check-label" for="exampleCheck1"> I'm not a robot </label>
-                    </td>
-                    <td>
-                        <img src="/static/images/logo/recaptcha_logo.png" class="capt_logo">
-                    </td>
-                </tr>
-            </table>
-            <img src="/static/images/Animation_01.gif" class="gif_image">
-            <button type="submit" class="btn btn-primary" id=btn_primary style="background:white;border:0px; display:none;"></button>
-        </form>
+      <form action="{% url 'captcha' %}" method='post'> {% csrf_token %}
+        <table class="checkbox-table">
+          <tr>
+            <td style="text-align:center;">
+              <input type="checkbox" name="I'm not a robot" id="cb1" />
+            </td>
+            <td>
+              <label class="form-check-label" for="exampleCheck1"> I'm not a robot </label>
+            </td>
+            <td>
+              <img src="/static/images/logo/recaptcha_logo.png" class="capt_logo">
+            </td>
+          </tr>
+        </table>
+        <img src="/static/images/Animation_01.gif" class="gif_image">
+        <button type="submit" class="btn btn-primary" id=btn_primary
+          style="background:white;border:0px; display:none;"></button>
+      </form>
     </div>
     <!-- <button type="submit" class="btn btn-primary" style="background:white;border:0px;"><img src="/static/images/Animation_01.gif" width="512", height="512" class="capt_logo"></button> -->
     <script>
@@ -190,11 +198,13 @@
     </script>
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
          -->
-</body>
+  </body>
 
 </html>

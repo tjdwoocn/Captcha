@@ -243,6 +243,112 @@
             color: #474747;
         }
     }
+
+/*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hidden_table {
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        height: 60%;
+        border: 2px solid #dfdfdf;
+        background: #f1f1f2;
+        border-spacing: 0px;
+        table-layout: fixed;
+    }
+    .logo_td {
+        padding: 5px;
+        height: 10%;
+        text-align: center;
+    }
+    .logo_img {
+        width: 50%;
+        height: 90%;
+    }
+    .info_td {
+        height: 10%;
+        font-size: 15px;
+        padding: 5px;
+        padding-left: 15px;
+        vertical-align: bottom;
+    }
+    .id_input_td {
+        text-align: center;
+        height: 15%;
+        padding-bottom: 10px;
+    }
+    .pw_input_td {
+        text-align: center;
+        height: 15%;
+        padding-bottom: 10px;
+    }
+    .input {
+        background: #ffffff;
+        font-size: 20px;
+        width: 96%;
+        height: 100%;
+    }
+    .capt_img_td {
+        height: 150px;
+        text-align: center;
+    }
+    .capt_img {
+        width: 98%;
+        height: 96%;
+    }
+    .info2_td {
+        text-align: center;
+        font-size: 11px;
+        height: 5%;
+        color: #9a9a9b;
+    }
+    .q_td {
+        height: 10%;
+        color: #03cf5d;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        word-break: break-all;
+    }
+    .input_td {
+        height: 10%;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+    .use-keyboard-input {
+        width: 96%;
+        font-size: 18px;
+        font-weight: bold;
+        border: 3px solid #e4e4e4;
+    }
+    .use-keyboard-input::placeholder {
+        padding-top: 12px;
+        color: #a5a5a7;
+    }
+    .button_tr {
+        text-align: center;
+        height: 10%;
+    }
+    .cancel_td {
+        padding-right: 0px;
+    }
+    .submit_td {
+        padding-left: 0px;
+    }
+    button {
+        border: 3px solid #dddddd;
+        border-radius: 2px solid #e2e2e2;
+        width: 94%;
+        height: 95%;
+        font-size: 16px;
+        color: #474747;
+    }
+}
 </style>
 
 <body onLoad="setTimeout('nextWin()', 300000)">

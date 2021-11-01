@@ -213,21 +213,7 @@
                 margin-left: 0px auto;
                 margin-top: 500px;
             }
-            {
-                % comment %
-            }
-            .hidden_div {
-                opacity: 0;
-                transition: all 0.9s;
-                height: 0%;
-            }
-            .hidden_div:hover {
-                opacity: 100;
-                height: 100%;
-            }
-            {
-                % endcomment %
-            }
+     
             .hidden_div {
                 margin-right: 0px auto;
                 width: 100%;
@@ -308,6 +294,172 @@
                 visibility: hidden;
             }
         }
+
+        /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    img {
+        display: block;
+        margin: 0px auto;
+    }
+    .main_container {
+        margin-right: 0px auto;
+        margin-left: 0px auto;
+        margin-top: 20%;
+    }
+    .hidden_div {
+        margin-right: auto;
+        margin-left: auto;
+        width: 80%;
+
+        animation-duration: 1s;
+        animation-name: autoplay1
+    }
+    @keyframes autoplay1 {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100;
+        }
+    }
+    .hidden_table {
+        border: 5px solid #820300;
+        width: 90%;
+        height: 230px;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .table_tr_1 {
+        height: 150px;
+    }
+    .capt_img {
+        width: 95%;
+        height: 180px;
+        border-radius: 10px;
+        padding-top: 4px;
+    }
+    .table_tr_2 {
+        height: 10%;
+    }
+    .input_back {
+        width: 70%;
+        height: 30px;
+        margin: 10px;
+        border: 5px solid#820300;
+        border-radius: 20px;
+        background: #ffe07e;
+        padding-left: 20px;
+    }
+    input {
+        font-size: 15px;
+        border: 2px solid #7186bb;
+        width: 92%;
+        height: 70%;
+    }
+    .capt_icon {
+        height: 50px;
+    }
+    .submit_tr {
+        background-color: white;
+        border: 5px solid white;
+        border-top: 5px solid #820300;
+    }
+    .submit_btn {
+        vertical-align: center;
+        color: white;
+        font-weight: bold;
+        width: 20%;
+        height: 30%;
+        font-size: 16px;
+        background: #7186bb;
+        border-radius: 5px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    img {
+        display: block;
+        margin: 0px auto;
+    }
+    .main_container {
+        margin-right: 0px auto;
+        margin-left: 0px auto;
+        margin-top: 15%;
+    }
+    .hidden_div {
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+
+        animation-duration: 1s;
+        animation-name: autoplay1
+    }
+    @keyframes autoplay1 {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100;
+        }
+    }
+    .hidden_table {
+        border: 5px solid #820300;
+        width: 90%;
+        height: 230px;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .table_tr_1 {
+        height: 150px;
+    }
+    .capt_img {
+        width: 95%;
+        height: 180px;
+        border-radius: 10px;
+        padding-top: 4px;
+    }
+    .table_tr_2 {
+        height: 10%;
+    }
+    .input_back {
+        width: 70%;
+        height: 30px;
+        margin: 10px;
+        border: 5px solid#820300;
+        border-radius: 20px;
+        background: #ffe07e;
+        padding-left: 20px;
+    }
+    input {
+        font-size: 15px;
+        border: 2px solid #7186bb;
+        width: 92%;
+        height: 70%;
+    }
+    .capt_icon {
+        height: 50px;
+    }
+    .submit_tr {
+        background-color: white;
+        border: 5px solid white;
+        border-top: 5px solid #820300;
+    }
+    .submit_btn {
+        vertical-align: center;
+        color: white;
+        font-weight: bold;
+        width: 20%;
+        height: 30%;
+        font-size: 16px;
+        background: #7186bb;
+        border-radius: 5px;
+    }
+}
     </style>
 </head>
 

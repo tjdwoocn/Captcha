@@ -123,7 +123,7 @@
         width: 140px;
     }
     
-    @media only screen and (max-device-width: 480px) {
+    @media only screen and (max-device-width: 660px) {
         /* For mobile phones: */
         .hidden_table {
             margin-top: 30px;
@@ -212,6 +212,188 @@
             width: 100px;
         }
     }
+        /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hidden_table {
+        margin-top: 130px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #099999;
+        background: #d5eef5;
+        width: 80%;
+        border-spacing: 0;
+        table-layout: fixed;
+    }
+    .title_tr {
+        background: #82cae0;
+    }
+    .title_td {
+        padding: 10px;
+        font-size: 21px;
+        font-weight: bold;
+        background: #82cae0;
+        border-spacing: 0;
+    }
+    .help_td {
+        padding: 10px;
+        text-align: right;
+        font-size: 19px;
+        background: #82cae0;
+        color: #309bb7;
+        border-spacing: 0;
+    }
+    .info_td {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .capt_img_td {
+        padding: 10px;
+        text-align: center;
+    }
+    .capt_img {
+        width: 500px;
+        height: 180px;
+    }
+    .option_img_td {
+        padding: 5px;
+        text-align: right;
+    }
+    .option_logo {
+        width: 60px;
+    }
+    .capt_len_td {
+        font-size: 18px;
+        padding-left: 10px;
+    }
+    .char_td {
+        padding: 10px;
+        padding-left: 10px;
+        width: 20px;
+        text-align: right;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .response_input_td {
+        padding: 10px;
+    }
+    .use-keyboard-input {
+        height: 30px;
+        width: 90%;
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+    .cb_td {
+        margin-top: 0px;
+        padding-top: 0px;
+        padding: 10px;
+        padding-top: 0px;
+        text-align: right;
+    }
+    .submit_btn {
+        border-radius: 5px;
+        margin-top: 0px;
+        padding-top: 0px;
+        border: 2px solid #748585;
+        background: #d5eef5;
+        font-size: 20px;
+        font-weight: bold;
+        width: 100px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .hidden_table {
+        margin-top: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #099999;
+        background: #d5eef5;
+        width: 60%;
+        border-spacing: 0;
+        table-layout: fixed;
+    }
+    .title_tr {
+        background: #82cae0;
+    }
+    .title_td {
+        padding: 10px;
+        font-size: 21px;
+        font-weight: bold;
+        background: #82cae0;
+        border-spacing: 0;
+    }
+    .help_td {
+        padding: 10px;
+        text-align: right;
+        font-size: 19px;
+        background: #82cae0;
+        color: #309bb7;
+        border-spacing: 0;
+    }
+    .info_td {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .capt_img_td {
+        padding: 10px;
+        text-align: center;
+    }
+    .capt_img {
+        width: 500px;
+        height: 180px;
+    }
+    .option_img_td {
+        padding: 5px;
+        text-align: right;
+    }
+    .option_logo {
+        width: 60px;
+    }
+    .capt_len_td {
+        font-size: 18px;
+        padding-left: 10px;
+    }
+    .char_td {
+        padding: 10px;
+        padding-left: 10px;
+        width: 20px;
+        text-align: right;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .response_input_td {
+        padding: 10px;
+    }
+    .use-keyboard-input {
+        height: 30px;
+        width: 90%;
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+    .cb_td {
+        margin-top: 0px;
+        padding-top: 0px;
+        padding: 10px;
+        padding-top: 0px;
+        text-align: right;
+    }
+    .submit_btn {
+        border-radius: 5px;
+        margin-top: 0px;
+        padding-top: 0px;
+        border: 2px solid #748585;
+        background: #d5eef5;
+        font-size: 20px;
+        font-weight: bold;
+        width: 100px;
+    }
+}
 </style>
 
 

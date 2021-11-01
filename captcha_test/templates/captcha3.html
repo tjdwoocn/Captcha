@@ -79,7 +79,7 @@
             /* For mobile phones: */
             .hidden_table {
                 background: linear-gradient(180deg, #f0f0fa 0%, #c2c9e3 100%);
-                margin-top: 30px;
+                margin-top: 50px;
                 margin-left: auto;
                 margin-right: auto;
                 width: 80%;
@@ -129,6 +129,68 @@
                 background: #799b5e;
             }
         }
+
+    /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hidden_table {
+        background: linear-gradient(180deg, #f0f0fa 0%, #c2c9e3 100%);
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 70%;
+        border-spacing: 0px;
+        table-layout: fixed;
+        padding: 10px;
+        border-collapse: separate;
+    }
+    .sign_td {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b456d;
+    }
+    .title_td {
+        font-size: 23px;
+        color: #3b456d;
+    }
+    .info_td {
+        font-size: 23px;
+        padding-top: 20px;
+        color: #3b456d;
+        font-weight: bold;
+    }
+    .info2_td {
+        font-size: 18px;
+    }
+    .capt_img_td {
+        width: 100%;
+        height: 200px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .capt_img {
+        width: 100%;
+        height: 100%;
+    }
+    .info3_td {
+        font-size: 18px;
+    }
+    .use-keyboard-input{
+        height:40px;
+    }
+    .submit_td {
+        font-size: 18px;
+    }
+    .submit_btn {
+        font-weight: bold;
+        color: #e9e9e9;
+        background: #799b5e;
+    }
+}
     </style>
 </head>
 

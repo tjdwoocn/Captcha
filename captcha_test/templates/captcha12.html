@@ -204,6 +204,110 @@
             font-weight: bold;
         }
     }
+        /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .hidden_table {
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        border: 2px solid #dfdfdf;
+        background: #ffffff;
+        border-spacing: 0px;
+    }
+    
+    .capt_img_td {
+        padding: 20px;
+    }
+    
+    .capt_img {
+        width: 600px;
+        height: 180px;
+    }
+    
+    .info_td {
+        color: #ffffff;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        background: #6c85b5;
+    }
+    
+    .info2_td {
+        padding-top: 0px;
+        padding-left: 20px;
+        font-size: 17px;
+        color: #afadad;
+    }
+    
+    .info3_td {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 23px;
+    }
+    
+    .use-keyboard-input {
+        height: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+        width: 100%;
+        padding: 5px;
+        font-size: 22px;
+        border-radius: 5px;
+    }
+    
+    .info4_td {
+        padding-top: 0px;
+        padding-left: 20px;
+        font-size: 20px;
+        color: #7ea6d7;
+    }
+    
+    .info5_td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+    
+    .cb_td {
+        border: 2px solid #e6e6e6;
+        background: #f2f2f1;
+        padding-top: 10px;
+        text-align: right;
+    }
+    
+    .submit_btn {
+        width: 100px;
+        height: 32px;
+        font-size: 20px;
+        padding: 5px;
+        background: #617aaf;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    
+    .cancle_btn {
+        width: 100px;
+        height: 32px;
+        font-size: 20px;
+        padding: 5px;
+        background: #f1f1f0;
+        color: #787073;
+        font-weight: bold;
+    }
+}
 </style>
 
 <body onLoad="setTimeout('nextWin()', 300000)">

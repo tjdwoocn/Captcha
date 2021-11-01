@@ -104,13 +104,13 @@
                 padding: 10px;
                 padding-left: 0px;
                 width: 100%;
-                font-size: 20px;
+                font-size: 18px;
             }
             .logo_td {
                 width: 100%;
             }
             .logo_img {
-                width: 80%;
+                width: 100%;
                 height: 70%;
             }
             .use-keyboard-input {
@@ -120,10 +120,67 @@
             .submit_btn {
                 padding: 5px;
                 font-size: 15px;
-                width: 50%;
+                width: 60%;
                 border-radius: 10px;
             }
         }
+        /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hidden_table {
+        margin-top: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        height: 60%;
+        border-spacing: 0px;
+        table-layout: fixed;
+        padding: 20px;
+        border-collapse: separate;
+        background: #f5f4f4;
+    }
+    .title_td {
+        font-size: 17px;
+        background: white;
+        border-radius: 15px;
+        padding: 5px;
+    }
+    .capt_img_td {
+        width: 100%;
+        height: 200px;
+    }
+    .capt_img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+    .input_td {
+        padding: 10px;
+        padding-left: 0px;
+        width: 100%;
+        font-size: 24px;
+    }
+    .logo_td {
+        width: 100%;
+    }
+    .logo_img {
+        width: 80%;
+        height: 70%;
+    }
+    .use-keyboard-input {
+        width: 100%;
+        font-size: 20px;
+    }
+    .submit_btn {
+        padding: 5px;
+        font-size: 20px;
+        width: 50%;
+        border-radius: 10px;
+    }
+}
     </style>
 </head>
 

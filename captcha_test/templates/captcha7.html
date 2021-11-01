@@ -133,7 +133,7 @@
             }
             [class*="img_logo"] {
                 margin-bottom: 0px;
-                width: 70%;
+                width: 60%;
                 height: 20%;
             }
             [class*="hidden_div"] {
@@ -144,7 +144,7 @@
             .hidden_table {
                 border: 2px solid rgb(226, 226, 226);
                 width: 90%;
-                height: 350px;
+                height: 300px;
                 background: #898989;
                 border-radius: 10px;
             }
@@ -156,30 +156,30 @@
             }
             .security_td {
                 color: rgb(226, 226, 226);
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: bold;
                 padding-left: 10px;
             }
             .info_td {
                 padding-left: 10px;
-                font-size: 20px;
+                font-size: 16px;
             }
             .capt_img {
                 width: 97%;
-                height: 160px;
+                height: 140px;
             }
             .text_td {
                 padding-left: 10px;
                 height: 20px;
-                font-size: 20px;
+                font-size: 16px;
                 vertical-align: top;
             }
             .input {
                 margin-top: 0px;
                 border: 2px solid #7186bb;
                 width: 90%;
-                height: 24px;
-                font-size: 22px;
+                height: 20px;
+                font-size: 15px;
             }
             .submit_td {
                 text-align: Right;
@@ -196,7 +196,7 @@
                 font-weight: bold;
                 width: 30%;
                 height: 26px;
-                font-size: 15px;
+                font-size: 13px;
                 background: #7186bb;
                 border-radius: 5px;
             }
@@ -295,6 +295,169 @@
                 }
             }
         }
+
+        /*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    [class*="main_container"] {
+        margin-top: 140px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    [class*="img_logo"] {
+        margin-bottom: 0px;
+        width: 40%;
+        height: 20%;
+    }
+    [class*="hidden_div"] {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .hidden_table {
+        border: 2px solid rgb(226, 226, 226);
+        width: 70%;
+        height: 350px;
+        background: #898989;
+        border-radius: 10px;
+    }
+    .captcha_table {
+        border: 2px solid #586893;
+        width: 95%;
+        height: 95%;
+        background: #ffffff
+    }
+    .security_td {
+        color: rgb(226, 226, 226);
+        font-size: 23px;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    .info_td {
+        padding-left: 10px;
+        font-size: 23px;
+    }
+    .capt_img {
+        width: 97%;
+        height: 160px;
+    }
+    .text_td {
+        padding-left: 10px;
+        height: 20px;
+        font-size: 23px;
+        vertical-align: top;
+    }
+    .input {
+        margin-top: 0px;
+        border: 2px solid #7186bb;
+        width: 90%;
+        height: 24px;
+        font-size: 21px;
+    }
+    .submit_td {
+        text-align: Right;
+        vertical-align: center;
+        padding-top: 2px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .submit_btn {
+        vertical-align: center;
+        color: white;
+        font-weight: bold;
+        width: 30%;
+        height: 26px;
+        font-size: 18px;
+        background: #7186bb;
+        border-radius: 5px;
+    }
+}
+/*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    [class*="main_container"] {
+        margin-top: 100px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    [class*="img_logo"] {
+        margin-bottom: 0px;
+        width: 30%;
+        height: 20%;
+    }
+    [class*="hidden_div"] {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .hidden_table {
+        border: 2px solid rgb(226, 226, 226);
+        width: 60%;
+        height: 350px;
+        background: #898989;
+        border-radius: 10px;
+    }
+    .captcha_table {
+        border: 2px solid #586893;
+        width: 95%;
+        height: 95%;
+        background: #ffffff
+    }
+    .security_td {
+        color: rgb(226, 226, 226);
+        font-size: 23px;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    .info_td {
+        padding-left: 10px;
+        font-size: 23px;
+    }
+    .capt_img {
+        width: 97%;
+        height: 160px;
+    }
+    .text_td {
+        padding-left: 10px;
+        height: 20px;
+        font-size: 23px;
+        vertical-align: top;
+    }
+    .input {
+        margin-top: 0px;
+        border: 2px solid #7186bb;
+        width: 90%;
+        height: 24px;
+        font-size: 21px;
+    }
+    .submit_td {
+        text-align: Right;
+        vertical-align: center;
+        padding-top: 2px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .submit_btn {
+        vertical-align: center;
+        color: white;
+        font-weight: bold;
+        width: 30%;
+        height: 26px;
+        font-size: 18px;
+        background: #7186bb;
+        border-radius: 5px;
+    }
+}
     </style>
 </head>
 

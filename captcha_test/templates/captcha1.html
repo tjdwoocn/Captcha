@@ -26,6 +26,12 @@
 </head>
 
 <style>
+    .logo_td{
+        padding:20px;
+    }
+    .logo_img{
+        height:70px;
+    }
     .hidden_table {
         margin-top: 100px;
         margin-left: auto;
@@ -102,12 +108,19 @@
     
     @media only screen and (max-device-width: 480px) {
         /* For mobile phones: */
+        .logo_td{
+            padding:10px;
+            padding-bottom:0px;
+        }
+        .logo_img{
+            height:40px;
+        }
         .hidden_table {
-            margin-top: 20px;
+            margin-top: 30px;
             margin-left: auto;
             margin-right: auto;
             width: 90%;
-            height: 70%;
+            height: 60%;
             border: 2px solid #dfdfdf;
             background: #fafafa;
             border-spacing: 0px;
@@ -167,6 +180,87 @@
             border-radius: 5px;
         }
     }
+
+/*
+##Device = 태블릿, 아이패드(세로),
+##Screen = 768px에서 1024px 사이
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .logo_td{
+        padding:10px;
+        padding-bottom:0px;
+    }
+    .logo_img{
+        height:40px;
+    }
+    .hidden_table {
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        height: 50%;
+        border: 2px solid #dfdfdf;
+        background: #fafafa;
+        border-spacing: 0px;
+        table-layout: fixed;
+    }
+    .title_td {
+        height: 25%;
+        font-size: 30px;
+        font-weight: bold;
+        padding: 20px;
+        padding-bottom: 10px;
+    }
+    .option_td {
+        padding: 10px;
+        padding-bottom: 5px;
+        color: gray;
+    }
+    .capt_img_td {
+        width: 90%;
+        height: 150px;
+        text-align: center;
+    }
+    .capt_img {
+        padding: 5px;
+        width: 96%;
+        height: 96%;
+    }
+    .input_td {
+        width: 95%;
+        height: 15%;
+        text-align: center;
+        padding: 5px;
+    }
+    .use-keyboard-input {
+        width: 95%;
+        height: 98%;
+        font-size: 20px;
+        border-radius: 5px solid #c8c6c2;
+    }
+    .use-keyboard-input::placeholder {
+        color: #c8c6c2;
+        padding-top: 10px;
+    }
+    .submit_td {
+        padding: 10px;
+        padding-left: 10px;
+        height: 20%;
+    }
+    .submit_btn {
+        width: 50%;
+        height: 100%;
+        background: #430091;
+        color: #fdeafd;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+
 </style>
 
 <body onLoad="setTimeout('nextWin()', 300000)">
