@@ -1,4 +1,4 @@
 # Captcha
 
 ## Captcha page url
-- imnotarobot.live
+- https://imnotarobot.live/
